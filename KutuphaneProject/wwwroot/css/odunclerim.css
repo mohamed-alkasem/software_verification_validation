@@ -1,0 +1,44 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+    --box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+#odunclerim-section .hr {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-color);
+}
+
+#odunclerim-section .content {
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+
+#odunclerim-section .kitap-img img {
+    width: 100px;
+    border-radius: 5px;
+}
+
+#odunclerim-section .btn-iade,
+#odunclerim-section .btn-ode,
+#odunclerim-section .btn-borc-ode {
+    border-radius: 5px;
+    background-color: var(--orange-color);
+    transition: all 0.2s linear;
+}
+
+#odunclerim-section .btn-iade:hover,
+#odunclerim-section .btn-ode:hover,
+#odunclerim-section .btn-borc-ode:hover {
+    background-color: var(--dark-color);
+}
+
+#odunclerim-section input {
+    border-radius: 5px;
+    border: 1px solid gray;
+}

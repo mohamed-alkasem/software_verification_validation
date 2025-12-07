@@ -1,0 +1,69 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+#ogrenci-giris-section {
+    padding-block: 70px;
+}
+
+#ogrenci-giris-section .merhaba {
+    font-size: 1.1rem !important;
+}
+
+#ogrenci-giris-section .btn-ogrenci-giris,
+#ogrenci-giris-section .btn-ogrenci-uye {
+    background-color: var(--orange-color);
+    transition: all 0.2s linear;
+}
+
+#ogrenci-giris-section .btn-ogrenci-giris:hover,
+#ogrenci-giris-section .btn-ogrenci-uye:hover {
+    background-color: var(--dark-color);
+}
+
+#ogrenci-giris-section .nav-item .nav-link {
+    background-color: transparent;
+    color: black;
+}
+
+#ogrenci-giris-section #uye-tab,
+#ogrenci-giris-section #giris-tab {
+    background-color: var(--orange-color);
+}
+
+#ogrenci-giris-section .btn-hesap-olustur {
+    width: fit-content;
+}
+
+#ogrenci-giris-section .btn-hesap-olustur:hover {
+    color: var(--orange-color) !important;
+}
+
+#ogrenci-giris-section .tab-content input {
+    border: 0;
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+}
+
+#ogrenci-giris-section .tab-content input:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(255, 104, 104, 0.558);
+}
+
+#ogrenci-giris-section .sifre-unuttum {
+    width: fit-content;
+}
+
+#ogrenci-giris-section .sifre-unuttum:hover {
+    color: var(--orange-color) !important;
+}
+
+#ogrenci-giris-section .form-check-input:checked {
+    background-color: var(--orange-color);
+    border-color: var(--orange-color);
+}

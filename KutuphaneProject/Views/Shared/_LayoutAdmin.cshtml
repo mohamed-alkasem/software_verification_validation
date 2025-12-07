@@ -1,0 +1,304 @@
+﻿@using Azure.Core
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>İSUBU-Kütüphanesi</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Patua+One&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+          rel="stylesheet">
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <link href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/header.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/anasayfa-admin.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/kategoriler.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/kitaplar-admin.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/mesajlar.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/kategori-ekle.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/kitap-ekle.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/kitap-duzelt.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/kategori.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/kategoriler.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/kategori-duzelt.css" asp-append-version="true">
+
+</head>
+<body>
+    <header>
+        <div class="container-fluid top-bar px-5 py-1 fixed-top">
+            <div class="row">
+                <div class="col-4 d-lg-none">
+                    <div class="h-100 d-flex align-items-center">
+                        <button class="btnToggler me-lg-5 border-0" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                                aria-label="Toggle navigation">
+                            <span class="btn-option bg-white d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-bars fa-xl" style="color: var(--dark-color);"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-8 d-none d-lg-block">
+                    <p class="d-flex align-items-center justify-content-center text-white h-100">
+                        <i>
+                            "Bilginin Kapısını Aralayın: Üniversite Kütüphanesine Hoş Geldiniz!"
+                        </i>
+                    </p>
+                </div>
+                <div class="col-8 col-lg-4 text-end">
+                    <div class="d-flex align-items-center justify-content-end h-100">
+                        <a href="/Adminler/Admin/Mesajlar" class="mesajlar text-decoration-none d-flex align-items-center justify-content-center bg-white ">
+                            <i class="fa-regular fa-message fa-lg"
+                               style="color: #373737;"></i>
+                        </a>
+                        <div class="d-flex align-items-center ms-2">
+                            <button class="btn-cikis border-0 p-2 bg-white d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal6">
+                                <i class="fa-solid fa-right-from-bracket" style="color: #373737;"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid py-2 mt-5">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-lg-3">
+                            <a class="navbar-brand h-100 d-flex align-items-center justify-content-center"
+                               href="/Adminler/Admin/AnasayfaAdmin">
+                                <img class="logo" src="~/imgs/logo.png" alt="logo"
+                                     style="width: 180px;">
+                            </a>
+                        </div>
+                        <div class="col-9 text-start d-none d-lg-block">
+                            <nav class="navbar navbar-expand-lg d-none d-lg-block">
+                                <!-- admin header -->
+                                <ul class="admin-nav navbar-nav gap-1 gap-xl-3 flex-grow-1 ms-lg-3">
+                                    <li class="nav-item px-xl-2">
+                                        <a class="nav-link" href="/Adminler/Admin/AnasayfaAdmin">
+                                            <i class="fa-solid fa-house fa-lg"
+                                               style="color: #808080;"></i> Anasayfa
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-xl-2">
+                                        <a class="nav-link fw-bold" href="/Adminler/Admin/KategoriEkle" style="color: #808080;">
+                                            <i class="fa-solid fa-circle-plus fa-lg" style="color: #808080;"></i>
+                                            Kategori Ekle
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-xl-2">
+                                        <div class="dropdown">
+                                            <button class="nav-link dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #808080;">
+                                                <i class="fa-solid fa-book fa-lg" style="color: #808080;"></i> Kategoriler
+                                            </button>
+                                            @await Component.InvokeAsync("HrKategorilerAdmin")
+                                        </div>
+                                    </li>
+                                    <li class="nav-item px-xl-2">
+                                        <a class="nav-link fw-bold" href="/Adminler/Admin/KitapEkle" style="color: #808080;">
+                                            <i class="fa-solid fa-circle-plus fa-lg" style="color: #808080;"></i>
+                                            Kitap
+                                            Ekle
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-xl-2">
+                                        <div class="dropdown">
+                                            <button class="nav-link dropdown-toggle fw-bold" type="button"
+                                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                                    style="color: #808080;">
+                                                <i class="fa-solid fa-book fa-lg"
+                                                   style="color: #808080;"></i> Kitaplar
+                                            </button>
+                                            @await Component.InvokeAsync("HrKategorilerForKitapAdmin")
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- offcanvas -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+             aria-labelledby="offcanvasNavbarLabel">
+
+            <div class="offcanvas-body">
+                <div class="d-flex position-relative mb-2">
+                    <div class="img-cont mx-auto mt-4">
+                        <img src="~/imgs/logo.png" alt="logo" style="width: 180px;">
+                    </div>
+                    <button type="button" class="btnClose" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <i class="fa-regular fa-circle-xmark fa-xl"></i>
+                    </button>
+                </div>
+                <div class="hr"></div>
+
+                <!-- admin sidebar -->
+                <ul class="admin-side-list navbar-nav justify-content-center flex-grow-1 my-3">
+                    <li class="nav-item ps-2 mb-2">
+                        <a class="nav-link fw-bold w-100 text-start" href="/Adminler/Admin/AnasayfaAdmin"
+                           style="color: #808080;">
+                            <i class="fa-solid fa-house fa-lg"
+                               style="color: #808080;"></i> Anasayfa
+                        </a>
+                    </li>
+                    <li class="nav-item ps-2 mb-2">
+                        <a class="nav-link fw-bold w-100 text-start" href="/Adminler/Admin/KategoriEkle" style="color: #808080;">
+                            <i class="fa-solid fa-circle-plus fa-lg" style="color: #808080;"></i>
+                            Kategori
+                            Ekle
+                        </a>
+                    </li>
+                    <li>
+                        <button class="btn-kategori dropdown-toggle nav-item fw-bold border-0 d-flex align-items-center bg-transparent mb-2 ps-2 w-100 text-start">
+                            <span class="nav-link text-start">
+                                <i class="fa-solid fa-list fa-lg"
+                                   style="color: #808080;"></i>
+                                Kategoriler
+                            </span>
+                        </button>
+                        @await Component.InvokeAsync("HrKategorilerAdminOffcanvas")
+                    </li>
+                    <li class="nav-item ps-2 mb-2">
+                        <a class="nav-link fw-bold w-100 text-start" href="/Adminler/Admin/KitapEkle" style="color: #808080;">
+                            <i class="fa-solid fa-circle-plus fa-lg" style="color: #808080;"></i>
+                            Kitap
+                            Ekle
+                        </a>
+                    </li>
+                    <li>
+                        <button class="btn-kitap dropdown-toggle nav-item fw-bold border-0 d-flex align-items-center bg-transparent mb-2 p-2 w-100 text-start">
+                            <span class="text-start">
+                                <i class="fa-solid fa-list fa-lg" style="color: #808080;"></i>
+                                Kitaplar
+                            </span>
+                        </button>
+                        @await Component.InvokeAsync("HrKategorilerForKitapAdminOffcanvas")
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Çıkış Modal -->
+        <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel6" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="exampleModalLabel6">Çıkış</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Çıkış yapmak istediğinizden emin misiniz?
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" action="/Ogrenci/CikisYap">
+                            <button type="submit" class="btn-evet btn btn-secondary" data-bs-dismiss="modal">Evet</button>
+                        </form>
+                        <button type="button" class="btn-hayir btn btn-primary" data-bs-dismiss="modal">Hayır</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="position-relative pt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-11">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="text-center mb-4 mb-lg-0">
+                                <div class="social-media bg-white p-2 pb-5">
+                                    <img class="mb-3" src="~/imgs/logo.png" style="width: 150px;">
+                                    <div class="hr mb-4"></div>
+                                    <div class="ikonlar d-flex gap-2 justify-content-center">
+                                        <a class="facebook" href="https://www.facebook.com" target="_blank">
+                                            <i class="fa-brands fa-facebook-f fa-xl"></i>
+                                        </a>
+                                        <a class="twitter" href="https://www.x.com" target="_blank">
+                                            <i class="fa-brands fa-twitter"></i>
+                                        </a>
+                                        <a class="youtube" href="https://www.youtube.com" target="_blank">
+                                            <i class="fa-brands fa-youtube"></i>
+                                        </a>
+                                        <a class="instagram" href="https://www.instagram.com" target="_blank">
+                                            <i class="fa-brands fa-instagram fa-xl"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 d-none d-md-block mb-3">
+                            <div class="kategoriler text-center text-white">
+                                <h4 class="position-relative mb-4">Ana Kategoriler</h4>
+                                <div class="d-flex flex-column gap-2">
+                                    <a class="text-secondary" href="">Bilim ve Teknoloji</a>
+                                    <a class="text-secondary" href="">Sanat ve Edebiyet</a>
+                                    <a class="text-secondary" href="">Roman</a>
+                                    <a class="text-secondary" href="">Tarih</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 d-none d-md-block mb-3">
+                            <div class="kategoriler text-center text-white">
+                                <h4 class="position-relative mb-4">Bağlantılar</h4>
+                                <div class="d-flex flex-column gap-2">
+                                    <a class="text-secondary" href="">Sıkça Sorulan Sorular (SSS) </a>
+                                    <a class="text-secondary" href="">Kuallnım Koşulları</a>
+                                    <a class="text-secondary" href="">Gizlilik Politikası</a>
+                                    <a class="text-secondary" href="">Yardım</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="iletisim text-center text-white">
+                                <h4 class="position-relative mb-4">Bize Ulaş</h4>
+                                <p class="opacity-75">Telefon No:</p>
+                                <p dir="ltr">+90552 358 74 86</p>
+                                <p class="opacity-75">E-posta Adresi:</p>
+                                <p class="text-white">
+                                    info@isubu.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="haklar text-center mt-5 mt-md-3">
+            <p class="text-white p-3 mb-0">
+                © 2025 ISUBÜ Üniversitesi. Tüm Haklar Saklıdır.
+            </p>
+        </div>
+    </footer>
+    <!-- swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

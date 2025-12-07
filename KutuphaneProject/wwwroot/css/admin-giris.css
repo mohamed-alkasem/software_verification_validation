@@ -1,0 +1,55 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+    --box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+#admin-giris-section {
+    padding-block: 70px;
+}
+
+#admin-giris-section .merhaba {
+    font-size: 1.1rem !important;
+}
+
+#admin-giris-section .btn-admin-giris {
+    background-color: var(--orange-color);
+    transition: all 0.2s linear;
+}
+
+#admin-giris-section .btn-admin-giris :hover {
+    background-color: var(--dark-color);
+}
+
+#admin-giris-section .nav-link.active {
+    background-color: var(--orange-color) !important;
+    color: white !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+#admin-giris-section .nav-item .nav-link {
+    background-color: transparent;
+    color: black;
+}
+
+#admin-giris-section #giris-tab.active {
+    background-color: var(--orange-color);
+    color: white;
+    border-top-left-radius: 5px !important;
+}
+
+#admin-giris-section .tab-content input {
+    border: 0;
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+}
+
+#admin-giris-section .tab-content input:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(255, 104, 104, 0.558);
+}

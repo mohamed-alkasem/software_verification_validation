@@ -1,0 +1,44 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+#sifre-unuttum-section {
+    padding-block: 70px;
+}
+
+#sifre-unuttum-section .btn-degistir {
+    background-color: var(--orange-color);
+    transition: all 0.2s linear;
+}
+
+#sifre-unuttum-section .btn-degistir:hover {
+    background-color: var(--dark-color);
+}
+
+#sifre-unuttum-section .nav-link.active {
+    background-color: var(--orange-color) !important;
+    color: white !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+#sifre-unuttum-section .nav-item .nav-link {
+    background-color: transparent;
+    color: black;
+}
+
+#sifre-unuttum-section .tab-content input {
+    border: 0;
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+}
+
+#sifre-unuttum-section .tab-content input:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(255, 104, 104, 0.558);
+}

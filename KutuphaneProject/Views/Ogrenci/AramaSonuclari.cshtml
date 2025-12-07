@@ -1,0 +1,38 @@
+﻿@model List<Kitap>
+
+<section id="sonuclar-section" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8 col-xl-7">
+                <h2 class="text-center mb-2">Arama Sonuçları</h2>
+                <div class="hr mb-5"></div>
+                <div class="sonuclar">
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var kitap in Model)
+                        {
+                            <div class="content bg-light d-flex justify-content-between gap-4 p-2 h-100 mb-4">
+                                <div class="kitap-img">
+                                    <img class="img-fluid" src="@kitap.ImageSrc" alt="@kitap.Ad">
+                                </div>
+                                <div class="flex-grow-1 d-flex flex-column justify-content-between">
+                                    <h4>@kitap.Ad</h4>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="my-auto">
+                                            Ekleme Tarihi: <span class="tarih">@kitap.EklemeTarihi.ToShortDateString()</span>
+                                        </p>
+                                        <a href="/Ogrenci/KitapOgrenci?KitapId=@kitap.Id" class="btn-fazla text-decoration-none border-0 p-1 text-white">Daha fazla</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>Arama sonuçları bulunamadı.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,88 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using KutuphaneProject.Models;
+@model Kitap
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="kitap-ekle-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <h2 class="title text-center">Yeni Kitap</h2>
+                <div class="hr mb-5"></div>
+                <div class="d-flex justify-content-center">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <form asp-area="Adminler" asp-controller="Admin" asp-action="KitapEkle" enctype="multipart/form-data" method="post" class="p-4" id="kitapForm">
+                        <div id="upload-container2" class="mb-3 mx-auto">
+                            <span class="plus-icon">+</span>
+                        </div>
+                        <input asp-for="clientFile" type="file" id="file-input2" accept="image/*">
+                        <span asp-validation-for="clientFile" class="text-danger"></span>
+                        <div>
+                            <div class="mb-3">
+                                <label class="d-block" for="kitapAdInput">Kitap Adı:</label>
+                                <input asp-for="Ad" id="kitapAdInput" class="ad-input d-block mb-2" type="text">
+                                <span asp-validation-for="Ad" class="text-danger"></span>
+                                <div class="mb-3">
+                                    <label for="kategoriDropdown" class="form-label">Kategori Adı:</label>
+                                    <div id="kategoriDropdown" class="dropdown kategori-items mb-2 w-100">
+                                        <button class="btn-dropdown d-flex justify-content-between btn w-100 mb-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="text-start text-muted">Kategori Seç</span>
+                                            <span class="dropdown-toggle ms-auto"></span>
+                                        </button>
+                                        <ul class="dropdown-menu w-100">
+                                            @foreach (var kategori in ViewBag.Kategoriler)
+                                            {
+                                                <li>
+                                                    <a class="dropdown-item" href="#" data-value="@kategori.Id">
+                                                        @kategori.Ad
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <input asp-for="KategoriId" type="hidden" id="selectedCategoryInput" />
+                                    <span asp-validation-for="KategoriId" class="text-danger"></span>
+                                </div>
+                                <label class="d-block" for="aciklamaTextarea">Açıklama:</label>
+                                <textarea asp-for="Aciklama" id="aciklamaTextarea" class="mb-2 w-100" rows="5" style="resize: none;"></textarea>
+                                <span asp-validation-for="Aciklama" class="text-danger"></span>
+                                <button type="submit" class="btn-kitap-ekle d-block text-white py-1 px-3 mx-auto">Ekle</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .swal-custom-success-button {
+        background-color: green !important;
+        color: white !important;
+        border: none !important;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'success',
+                title: 'Başarılı!',
+                html: '@Html.Raw(TempData["SuccessMessage"])',
+                confirmButtonText: 'Tamam',
+                customClass: {
+                    confirmButton: 'swal-custom-success-button'
+                }
+            });
+        </script>
+    }
+}

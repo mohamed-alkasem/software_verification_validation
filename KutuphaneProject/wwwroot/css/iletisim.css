@@ -1,0 +1,52 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+#iletisim-section .iletisim-part {
+    box-shadow: var(--box-shadow);
+}
+
+#iletisim-section .hr {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-color);
+}
+
+#iletisim-section .btnSubmit {
+    background-color: var(--orange-color);
+    transition: all 0.2s linear;
+}
+
+#iletisim-section .btnSubmit:hover {
+    background-color: var(--dark-color);
+}
+
+#iletisim-section #iletisim-section .btnSubmit:hover {
+    background-color: var(--dark-color);
+}
+
+#iletisim-section textarea {
+    resize: none;
+}
+
+#iletisim-section input,
+#iletisim-section textarea {
+    border: 0;
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+}
+
+#iletisim-section input:focus,
+#iletisim-section textarea:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(255, 104, 104, 0.558);
+}
+
+#iletisim-section i {
+    color: var(--orange-color);
+}

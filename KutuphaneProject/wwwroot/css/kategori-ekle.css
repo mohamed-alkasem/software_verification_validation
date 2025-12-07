@@ -1,0 +1,65 @@
+﻿:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.kategori-ekle-section .title {
+    font-size: 1.5rem;
+}
+
+.kategori-ekle-section .hr {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-color);
+}
+
+.kategori-ekle-section #kategoriForm {
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.kategori-ekle-section #upload-container1 {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #f9f9f9;
+}
+
+.kategori-ekle-section #upload-container1 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.kategori-ekle-section #file-input1 {
+    display: none;
+}
+
+.kategori-ekle-section .plus-icon {
+    font-size: 50px;
+    color: #aaa;
+}
+
+.kategori-ekle-section .btn-kategori-ekle {
+    border: 0;
+    border-radius: 5px;
+    background-color: var(--orange-color);
+    transition: all 0.2s linear;
+}
+
+.kategori-ekle-section .ad-input {
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    box-shadow: var(--box-shadow);
+    width: 300px;
+}

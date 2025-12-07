@@ -1,0 +1,124 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+footer {
+    background-color: var(--dark-color);
+}
+
+footer .social-media {
+    border-radius: 15px;
+}
+
+footer .socail-media img {
+    width: 200px;
+}
+
+footer .hr {
+    height: 1px;
+    width: 100%;
+    background-image: linear-gradient(to right, transparent, black, transparent);
+}
+
+footer .ikonlar a {
+    background-color: var(--dark-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s linear;
+}
+
+footer .facebook:hover {
+    transform: scale(1.1);
+    background-color: #1877F2;
+}
+
+footer .twitter:hover {
+    transform: scale(1.1);
+    background-color: #55ACEE;
+}
+
+footer .youtube:hover {
+    transform: scale(1.1);
+    background-color: #FF0000;
+}
+
+footer .instagram:hover {
+    transform: scale(1.1);
+    background-color: #bebcbc;
+}
+
+footer .kategoriler a {
+    font-size: 0.9rem;
+    transition: all 0.3s linear;
+    text-decoration: none;
+}
+
+footer .iletisim p {
+    font-size: 0.9rem;
+}
+
+footer .kategoriler a:hover {
+    color: var(--orange-color) !important;
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+footer h4 {
+    letter-spacing: 1px;
+}
+
+footer h4::before {
+    content: '';
+    height: 4px;
+    width: 55px;
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--orange-color);
+    border-radius: 5px;
+}
+
+footer .baglantilar a {
+    background-color: white !important;
+    color: var(--orange-color) !important;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    text-decoration: none;
+    padding: 3px 8px;
+}
+
+footer .haklar {
+    background-color: var(--orange-color);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    font-size: 0.9rem;
+}
+
+@keyframes fade-whats {
+    0% {
+        outline: 2px dashed rgba(124, 230, 21, 1);
+        outline-offset: 0px;
+    }
+
+    80% {
+        outline: 2px dashed rgba(124, 230, 21, 1);
+    }
+
+    100% {
+        outline: 2px dashed rgba(124, 230, 21, 0);
+        outline-offset: 20px;
+
+    }
+}

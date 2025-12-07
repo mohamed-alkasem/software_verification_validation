@@ -1,0 +1,30 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+    --box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+#kitaplar-admin-section .hr {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-color);
+}
+
+#kitaplar-admin-section .content {
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+
+#kitaplar-admin-section .kitap-img img {
+    width: 80px;
+    border-radius: 5px;
+}
+
+#kitaplar-admin-section .btn-duzelt {
+    transition: all 0.2s linear;
+    padding: 4px 10px !important;
+}

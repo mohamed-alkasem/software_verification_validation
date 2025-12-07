@@ -1,0 +1,64 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using KutuphaneProject.Models;
+@model Kategori
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="kategori-ekle-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <div>
+                    <h2 class="title text-center">Yeni Kategori</h2>
+                    <div class="hr mb-5"></div>
+                    <div class="d-flex justify-content-center">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <form class="p-4" asp-area="Adminler" asp-controller="Admin" asp-action="KategoriEkle" id="kategoriForm" enctype="multipart/form-data" method="post">
+                            <div id="upload-container1" class="mb-4 mx-auto">
+                                <span class="plus-icon">+</span>
+                            </div>
+                            <input asp-for="clientFile" type="file" id="file-input1" accept="image/*">
+                            <span asp-validation-for="clientFile" class="text-danger"></span>
+
+                            <label class="d-block mb-1" for="">Kategori Adı:</label>
+                            <input asp-for="Ad" class="ad-input d-block mb-3" type="text">
+                            <span asp-validation-for="Ad" class="text-danger"></span>
+
+                            <button type="submit" class="btn-kategori-ekle d-block text-white py-1 px-3 mx-auto">Ekle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .swal-custom-success-button {
+        background-color: green !important;
+        color: white !important;
+        border: none !important;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'success',
+                title: 'Başarılı!',
+                html: '@Html.Raw(TempData["SuccessMessage"])',
+                confirmButtonText: 'Tamam',
+                customClass: {
+                    confirmButton: 'swal-custom-success-button'
+                }
+            });
+        </script>
+    }
+}

@@ -1,0 +1,109 @@
+﻿@model SifreUnuttum
+
+<section id="sifre-unuttum-section" class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-7 col-lg-6 col-xl-4">
+                <div class="card shadow-sm">
+                    <div class="card-body p-0">
+                        <ul class="nav nav-tabs d-flex justify-content-evenly mb-3" id="myTab" role="tablist">
+                            <li class="nav-item w-100 text-center" role="presentation">
+                                <button class="nav-link border-0 active w-100 text-dark fs-5" id="giris-tab"
+                                        data-bs-toggle="tab" data-bs-target="#giris" type="button" role="tab"
+                                        aria-controls="giris" aria-selected="true">
+                                    Şifreyi Değiştir
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content p-4 pb-5" id="myTabContent">
+                            <div class="tab-pane fade show active" id="giris" role="tabpanel"
+                                 aria-labelledby="giris-tab">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <form asp-action="SifreUnuttum" asp-controller="Ogrenci" class="sifre-degistir-form" method="post">
+                                    <div class="mb-2">
+                                        <label for="ogrenciNo-giris" class="form-label">Öğrenci No:</label>
+                                        <input asp-for="OgrenciNo" type="text" class="w-100 p-1 mb-2" id="ogrenciNo-giris" maxlength="10">
+                                        <span asp-validation-for="OgrenciNo" class="text-danger"></span>
+                                    </div>
+
+                                    <label for="sifre" class="form-label">Şifre</label>
+                                    <div class="mb-2 position-relative">
+                                        <input asp-for="YeniSifre" type="password" class="w-100 p-1 mb-2" id="sifre" maxlength="20">
+                                        <button type="button" class="btn btn-link position-absolute end-0 top-0 d-flex mt-1 me-2 text-decoration-none">
+                                            <i class="fa-solid fa-eye" style="color: #6b6b6b;"></i>
+                                        </button>
+                                        <span asp-validation-for="YeniSifre" class="text-danger"></span>
+                                    </div>
+
+                                    <label for="sifre-tekrar" class="form-label">Şifre Tekrar</label>
+                                    <div class="mb-3 position-relative">
+                                        <input asp-for="SifreTekrar" type="password" class="w-100 p-1 mb-2" id="sifre-tekrar" maxlength="20">
+                                        <button type="button" class="btn btn-link position-absolute end-0 top-0 d-flex mt-1 me-2 text-decoration-none">
+                                            <i class="fa-solid fa-eye" style="color: #6b6b6b;"></i>
+                                        </button>
+                                        <span asp-validation-for="SifreTekrar" class="text-danger"></span>
+                                    </div>
+                                    <button type="submit" class="btn-degistir btn text-white w-100 mt-3">DEĞİŞTİR</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .swal-custom-success-button {
+        background-color: green !important; 
+        color: white !important;
+        border: none !important; 
+    }
+
+    .swal-custom-warning-button {
+        background-color: darkgoldenrod !important; 
+        color: white !important; 
+        border: none !important; 
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        @if (TempData["WarningMessage"] != null)
+        {
+            <text>
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Uyarı!',
+                        text: '@Html.Raw(TempData["WarningMessage"])',
+                        confirmButtonText: 'Tamam',
+                        customClass: {
+                                confirmButton: 'swal-custom-warning-button'
+                        }
+                    });
+            </text>
+        }
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Başarılı!',
+                            text: '@Html.Raw(TempData["SuccessMessage"])',
+                            confirmButtonText: 'Tamam',
+                                customClass: {
+                                                    confirmButton: 'swal-custom-success-button'
+                                             }
+                        }).then(() => {
+                            // Mesaj gösterildikten sonra TempData temizleniyor
+                @TempData.Remove("SuccessMessage");
+                        });
+            </text>
+        }
+    </script>
+} 

@@ -1,0 +1,40 @@
+﻿@model List<Mesaj>
+
+<section id="mesajlar-section" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8 col-xl-7 border border-1">
+                <table id="mesajTable" class="border border-1">
+                    <thead>
+                        <tr>
+                            <th class="border border-1">Gönderme Tarihi</th>
+                            <th class="border border-1">E-posta</th>
+                            <th class="border border-1">Mesaj İçeriği</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var mesaj in Model)
+                        {
+                            <tr>
+                                <td class="border border-1">@mesaj.MesajTarihi</td>
+                                <td class="border border-1">@mesaj.Eposta</td>
+                                <td class="border border-1">@mesaj.Icerik</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts
+{
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const table = new DataTable('#mesajTable');
+        });
+    </script>
+}

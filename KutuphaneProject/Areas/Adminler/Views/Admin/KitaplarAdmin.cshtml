@@ -1,0 +1,104 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using KutuphaneProject.Models
+@model List<Kitap>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section id="kitaplar-admin-section" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8 col-xl-7">
+                <h2 class="text-center mb-2">Kitaplar</h2>
+                <div class="hr mb-5"></div>
+                <div class="kitaplar mb-4">
+                    @foreach (var kitap in Model)
+                    {
+                        <div class="content bg-light d-flex justify-content-between gap-4 p-2 h-100 mb-4">
+                            <div class="kitap-img">
+                                <img class="img-fluid" src="@kitap.ImageSrc" alt="@kitap.Ad">
+                            </div>
+                            <div class="flex-grow-1 d-flex flex-column justify-content-between">
+                                <div>
+                                    <h4>@kitap.Ad</h4>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="my-auto">
+                                        Ekleme Tarihi: <span class="tarih">@kitap.EklemeTarihi.ToShortDateString()</span>
+                                    </p>
+                                    <div>
+                                        <button type="submit" class="btn-kitap-sil btn btn-danger border-0 text-white text-decoration-none" data-bs-toggle="modal" data-kitap-id="@kitap.Id">Sil</button>
+                                        <a href="/Adminler/Admin/KitapDuzelt?kitapId=@kitap.Id" class="btn-duzelt btn btn-warning text-decoration-none border-0 py-1 px-2 text-white">
+                                            Düzelt
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .swal-custom-success-button {
+        background-color: green !important;
+        color: white !important;
+        border: none !important;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Tüm sil butonlarını seç
+            const silButtons = document.querySelectorAll(".btn-kitap-sil");
+
+            silButtons.forEach(button => {
+                button.addEventListener("click", function (event) {
+                    event.preventDefault(); // Varsayılan davranışı engelle
+
+                    const kitapId = this.getAttribute("data-kitap-id");
+                    if (kitapId) {
+                        Swal.fire({
+                            title: 'Silmek istediğinizden emin misiniz?',
+                            text: "Bu işlem geri alınamaz!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#d33',
+                            cancelButtonColor: '#3085d6',
+                            confirmButtonText: 'Evet, sil!',
+                            cancelButtonText: 'İptal'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // Silme isteği yap
+                                window.location.href = `/Adminler/Admin/KitapSil?kitapId=${kitapId}`;
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'success',
+                title: 'Başarılı!',
+                html: '@Html.Raw(TempData["SuccessMessage"])',
+                confirmButtonText: 'Tamam',
+                customClass: {
+                    confirmButton: 'swal-custom-success-button'
+                }
+            });
+        </script>
+    }
+}

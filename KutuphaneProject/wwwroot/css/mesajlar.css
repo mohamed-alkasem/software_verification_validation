@@ -1,0 +1,19 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+#mesajlar-section .hr {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-color);
+}
+
+#mesajlar-section .content {
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}

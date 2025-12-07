@@ -1,0 +1,181 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = KutuphaneProject
+build_property.RootNamespace = KutuphaneProject
+build_property.ProjectDir = C:\Users\hmalk\Desktop\4. sınıf\yazılım_geçerleme\proje\KutuphaneProject\KutuphaneProject\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\hmalk\Desktop\4. sınıf\yazılım_geçerleme\proje\KutuphaneProject\KutuphaneProject
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/hmalk/AppData/Roaming/SonarLint for Visual Studio/.global/csharp/SonarLint.xml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Areas/Adminler/Views/Admin/AnasayfaAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5sZXJcVmlld3NcQWRtaW5cQW5hc2F5ZmFBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Areas/Adminler/Views/Admin/KategoriDuzelt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5sZXJcVmlld3NcQWRtaW5cS2F0ZWdvcmlEdXplbHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Areas/Adminler/Views/Admin/KategoriEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5sZXJcVmlld3NcQWRtaW5cS2F0ZWdvcmlFa2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Areas/Adminler/Views/Admin/KitapDuzelt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5sZXJcVmlld3NcQWRtaW5cS2l0YXBEdXplbHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Areas/Adminler/Views/Admin/KitapEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5sZXJcVmlld3NcQWRtaW5cS2l0YXBFa2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Areas/Adminler/Views/Admin/KitaplarAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5sZXJcVmlld3NcQWRtaW5cS2l0YXBsYXJBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Areas/Adminler/Views/Admin/Mesajlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5sZXJcVmlld3NcQWRtaW5cTWVzYWpsYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/AdminGiris.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxBZG1pbkdpcmlzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/AramaSonuclari.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxBcmFtYVNvbnVjbGFyaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/Hakkinda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxIYWtraW5kYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/Iletisim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxJbGV0aXNpbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/Kategori.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxLYXRlZ29yaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/Kategoriler.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxLYXRlZ29yaWxlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/KitapOgrenci.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxLaXRhcE9ncmVuY2kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/Mesajlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxNZXNhamxhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/OdemeYap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxPZGVtZVlhcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/Odunclerim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxPZHVuY2xlcmltLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/OgrenciGiris.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxPZ3JlbmNpR2lyaXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/OgrenciUye.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxPZ3JlbmNpVXllLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Ogrenci/SifreUnuttum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxTaWZyZVVudXR0dW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/Components/HrKategorilerAdminOffcanvas/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSHJLYXRlZ29yaWxlckFkbWluT2ZmY2FudmFzXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/Components/HrKategorilerAdmin/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSHJLYXRlZ29yaWxlckFkbWluXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/Components/HrKategorilerForKitapAdminOffcanvas/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSHJLYXRlZ29yaWxlckZvcktpdGFwQWRtaW5PZmZjYW52YXNcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/Components/HrKategorilerForKitapAdmin/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSHJLYXRlZ29yaWxlckZvcktpdGFwQWRtaW5cRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/Components/HrKategorilerOgrenciGirissiz/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSHJLYXRlZ29yaWxlck9ncmVuY2lHaXJpc3NpelxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/Components/HrKategorilerOgrenciOffcanvasGirissiz/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSHJLYXRlZ29yaWxlck9ncmVuY2lPZmZjYW52YXNHaXJpc3NpelxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/Components/HrKategorilerOgrenciOffcanvas/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSHJLYXRlZ29yaWxlck9ncmVuY2lPZmZjYW52YXNcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/Components/HrKategorilerOgrenci/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSHJLYXRlZ29yaWxlck9ncmVuY2lcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/_LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmalk/Desktop/4. sınıf/yazılım_geçerleme/proje/KutuphaneProject/KutuphaneProject/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-tgd5f0i2mc

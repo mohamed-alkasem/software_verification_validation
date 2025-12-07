@@ -1,0 +1,17 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<Kategori>
+
+<ul class="dropdown-menu">
+    @foreach (var kategori in Model)
+    {
+        <li>
+            <a href="/Ogrenci/Kategori?kategoriId=@kategori.Id" class="dropdown-item">
+                @kategori.Ad
+            </a>
+        </li>
+    }
+</ul>
+@section Scripts
+{
+    <script src="~/js/main.js"></script>
+}

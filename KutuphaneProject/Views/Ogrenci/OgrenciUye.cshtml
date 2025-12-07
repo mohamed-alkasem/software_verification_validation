@@ -1,0 +1,98 @@
+﻿@model KutuphaneProject.UserModels.RegisterUser
+
+
+<section id="ogrenci-giris-section" class=" bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-7 col-lg-6 col-xl-4">
+                <p class="merhaba text-center px-1">
+                    <span class="fw-bold fs-5">Merhaba,</span><br>ISUBÜ
+                    sisteminde hesap oluştur
+                </p>
+                <div class="card shadow-sm">
+                    <div class="card-body p-0">
+                        <ul class="nav nav-tabs mb-3" id="myTab">
+                            <li class="nav-item w-100 text-center">
+                                <p class="nav-link text-white border-0 w-100" id="uye-tab">Üye Ol</p>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-4 pb-5" id="myTabContent">
+                            <div class="tab-pane fade show active" id="uye" role="tabpanel" aria-labelledby="uye-tab">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <form asp-action="OgrenciUye" asp-controller="Ogrenci" class="uyeOl-form" method="post">
+                                    <div class="mb-3">
+                                        <label for="ogrenciNo-uye" class="form-label">Öğrenci No:</label>
+                                        <input asp-for="OgrenciNo" type="text" class="w-100 p-1 mb-2" id="ogrenciNo-uye" required maxlength="10">
+                                        <span asp-validation-for="OgrenciNo" class="text-danger"></span>
+                                        <div class="mb-3">
+                                            <label for="ad-uye" class="form-label">Ad ve Soyad:</label>
+                                            <input asp-for="OgrenciAdSoyad" type="text" class="w-100 p-1 mb-2" id="ad-uye" maxlength="20">
+                                            <span asp-validation-for="OgrenciAdSoyad" class="text-danger"></span>
+                                        </div>
+
+                                        <label for="password-uye" class="form-label">Şifre</label>
+                                        <div class="mb-3 position-relative">
+                                            <input asp-for="OgrenciSifre" type="password" class="w-100 p-1 mb-2" id="password-uye" maxlength="20">
+                                            <button type="button"
+                                                    class="btn btn-link position-absolute end-0 top-0 d-flex mt-1 me-2 text-decoration-none">
+                                                <i class="fa-solid fa-eye" style="color: #6b6b6b;"></i>
+                                            </button>
+                                            <span asp-validation-for="OgrenciSifre" class="text-danger"></span>
+                                        </div>
+
+                                        <label for="password-giris-tekrar" class="form-label">Şifre Tekrar</label>
+                                        <div class="mb-3 position-relative">
+                                            <input asp-for="OgrenciSifreTekrar" type="password" class="w-100 p-1 mb-2" id="password-giris-tekrar" maxlength="20">
+                                            <button type="button"
+                                                    class="btn btn-link position-absolute end-0 top-0 d-flex mt-1 me-2 text-decoration-none">
+                                                <i class="fa-solid fa-eye" style="color: #6b6b6b;"></i>
+                                            </button>
+                                            <span asp-validation-for="OgrenciSifreTekrar" class="text-danger"></span>
+                                        </div>
+
+                                        <button type="submit" class="btn-ogrenci-uye btn text-white w-100 mt-3">
+                                            ÜYE OL
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .swal-custom-confirm-button {
+        background-color: green !important;
+        color: white !important;
+        border: none !important;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Başarılı!',
+                        text: '@Html.Raw(TempData["SuccessMessage"])',
+                        confirmButtonText: 'Tamam',
+                            customClass: {
+                                            confirmButton: 'swal-custom-confirm-button'
+                                         }
+                    }).then(() => {
+                        // Mesaj gösterildikten sonra TempData temizleniyor
+                @TempData.Remove("SuccessMessage");
+                    });
+            </text>
+        }
+    </script>
+} 

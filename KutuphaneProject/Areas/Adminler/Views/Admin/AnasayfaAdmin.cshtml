@@ -1,0 +1,82 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section id="hero-section">
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-wrap="true"
+         data-bs-pause="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="4500">
+                <img src="~/imgs/slide1.jpg" class="d-block w-100" alt="image">
+                <div class="carousel-caption">
+                    <h2 class="fw-bold mb-md-3 text-white">ISUBÜ Kütüphanesi</h2>
+                    <p class="d-none d-md-block text-white">
+                        Binlerce kitap, dijital kaynak ve bilimsel
+                        makale ile ISUBÜ kütüphanesi, araştırmalarınızda size rehberlik etmeye hazır
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4500">
+                <img src="~/imgs/slide2.jpg" class="d-block w-100" alt="image">
+                <div class="carousel-caption">
+                    <h2 class="fw-bold mb-md-3 text-white">Huzurlu Çalışma Alanları</h2>
+                    <p class="d-none d-md-block text-white">
+                        ISUBÜ öğrencileri ve akademisyenleri için özenle
+                        tasarlanan çalışma alanlarımız, odaklanmanızı ve verimli bir şekilde çalışmanızı sağlar.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev ms-2 ms-lg-5 d-none d-md-block" type="button"
+                data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span aria-hidden="true">
+                <img src="~/imgs/left-arrow.svg" alt="arrow"
+                     style="width: 50px; width:50px;">
+            </span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next me-2 me-lg-5 d-none d-md-block" type="button"
+                data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span aria-hidden="true">
+                <img src="~/imgs/right-arrow.svg" alt="arrow"
+                     style="width: 50px; width:50px;">
+            </span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+<section id="video-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="text-center mb-4 mb-md-0">
+                            <img class="mb-3" src="~/imgs/logo.png" alt="image" style="width: 200px;">
+                            <p>
+                                Hedeflerimiz arasında genelinde Türkiye’ye, özelinde Isparta’ya katma değer
+                                oluşturmayı amaç edindik. Öğrencilerimize artı değerler kazandırarak iş arayan
+                                değil, iş için aranan elemanlar yetiştirmeyi, sanayi ile barışık ortak işler
+                                yürütebilmeyi, sanayi ve tarım başta olmak üzere tüm sektörlerle iç içe olmayı
+                                sağlama yönünde çalışmalar yapmaktayız.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="ipad-frame">
+                            <div class="inner-frame d-flex justify-content-center align-items-center h-100 w-100">
+                                <a href="https://youtu.be/4cZTclMlPlk" target="_blank">
+                                    <i class="fa-solid fa-circle-play" style="color: #e52710;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

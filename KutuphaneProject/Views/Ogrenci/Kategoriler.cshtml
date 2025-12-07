@@ -1,0 +1,21 @@
+﻿@using KutuphaneProject.Models;
+@model List<Kategori>
+
+<section id="kategoriler-section">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-center mb-2">Kategoriler</h2>
+                        <div class="hr mb-5"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <kategoriler class="col-12" kategorilerlist=@Model></kategoriler>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

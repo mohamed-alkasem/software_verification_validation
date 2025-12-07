@@ -1,0 +1,55 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using KutuphaneProject.Models;
+@model Odunc
+
+<section id="odunclerim-section" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
+                <h2 class="text-center mb-2">Ödeme Sayfası</h2>
+                <div class="hr mb-4"></div>
+                <div>
+                    <h2 class="fw-bold fs-5" id="exampleModalLabel7">Banka/kredi kartı ile öde</h2>
+                    <div class="mb-4">
+                        <img class="me-2" src="~/imgs/card.png" alt="" style="width: 50px;">
+                        <img class="me-2" src="~/imgs/visa.png" alt="" style="width: 50px;">
+                        <img src="~/imgs/paypal.png" alt="" style="width: 50px;">
+                    </div>
+                    <form asp-action="OdemeYap" asp-controller="Ogrenci" method="post" class="odemeForm mb-3">
+                        <input type="hidden" asp-for="Id" />
+                        <input asp-for="KartNo" class="kartNo w-100 p-2 mb-2" type="text" placeholder="Kredi kart numarası" maxlength="16">
+                        <span asp-validation-for="KartNo" class="text-danger"></span>
+                        <button type="submit" class="btn-borc-ode text-white border-0 w-100 p-2 mt-2">Ödeme Yap</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .swal-custom-success-button {
+        background-color: green !important;
+        color: white !important;
+        border: none !important;
+    }
+</style>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'success',
+                title: 'Başarılı!',
+                html: '@Html.Raw(TempData["SuccessMessage"])',
+                confirmButtonText: 'Tamam',
+                customClass: {
+                    confirmButton: 'swal-custom-success-button'
+                }
+            });
+        </script>
+    }
+}

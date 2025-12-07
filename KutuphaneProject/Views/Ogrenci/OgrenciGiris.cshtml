@@ -1,0 +1,58 @@
+﻿@model KutuphaneProject.UserModels.LoginUser
+
+<section id="ogrenci-giris-section" class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-7 col-lg-6 col-xl-4">
+                <p class="merhaba text-center px-1">
+                    <span class="fw-bold fs-5">Merhaba,</span><br>ISUBÜ
+                    sistemine giriş yap
+                </p>
+                <div class="card shadow-sm">
+                    <div class="card-body p-0">
+                        <ul class="nav nav-tabs mb-3" id="myTab">
+                            <li class="nav-item w-100 text-center" role="presentation">
+                                <p class="nav-link border-0 text-white" id="giris-tab">Giriş Yap</p>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-4 pb-5" id="myTabContent">
+                            <div class="tab-pane fade show active" id="giris" role="tabpanel"
+                                 aria-labelledby="giris-tab">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <form asp-action="OgrenciGiris" asp-controller="Ogrenci" class="ogr-giris-form" method="post">
+                                    <div class="mb-3">
+                                        @Html.Label("ogrenciNo", "Öğrenci No:", new { @class = "form-label" })
+                                        <input asp-for="OgrenciNo" type="text" class="w-100 p-1 mb-2" id="ogrenciNo-giris" required maxlength="10">
+                                        <span asp-validation-for=OgrenciNo class="text-danger"></span>
+                                    </div>
+
+                                    @Html.Label("sifre", "Şifre: ", new { @class = "form-label" })
+                                    <div class="mb-3 position-relative">
+                                        <input asp-for="OgrenciSifre" type="password" class="w-100 p-1 mb-2" id="password-giris" required maxlength="20">
+                                        <button type="button"
+                                                class="btn btn-link position-absolute end-0 top-0 d-flex mt-1 me-2 text-decoration-none">
+                                            <i class="fa-solid fa-eye" style="color: #6b6b6b;"></i>
+                                        </button>
+                                        <span asp-validation-for="OgrenciSifre" class="text-danger"></span>
+                                    </div>
+
+                                    @Html.ActionLink("Şifremi Unuttum", "SifreUnuttum", "Ogrenci", null, new { @class = "sifre-unuttum text-dark d-block ms-auto mb-3" })
+
+                                    <button type="submit" class="btn-ogrenci-giris mb-4 btn text-white w-100 mt-3">
+                                        GİRİŞ YAP
+                                    </button>
+
+                                    @Html.ActionLink("Hesabınız yok mu?", "OgrenciUye", "Ogrenci", null, new { @class = "btn-hesap-olustur d-inline-block text-dark text-decoration-none text-center" })
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} 

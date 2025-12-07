@@ -1,0 +1,54 @@
+﻿@using KutuphaneProject.Models.UserModels;
+@model AdminLoginModel
+
+<section id="admin-giris-section" class=" bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-7 col-lg-6 col-xl-4">
+                <p class="merhaba text-center px-1">
+                    <span class="fw-bold fs-5">Merhaba,</span><br>ISUBÜ sistemine giriş yap
+                </p>
+                <div class="card shadow-sm">
+                    <div class="card-body p-0">
+                        <ul class="nav nav-tabs d-flex justify-content-evenly mb-3" id="myTab" role="tablist">
+                            <li class="nav-item w-100 text-center" role="presentation">
+                                <button class="nav-link border-0 active w-100 text-dark fs-5" id="giris-tab"
+                                        data-bs-toggle="tab" data-bs-target="#giris" type="button" role="tab"
+                                        aria-controls="giris" aria-selected="true">
+                                    Giriş
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-4 pb-5" id="myTabContent">
+                            <div class="tab-pane fade show active" id="giris" role="tabpanel"
+                                 aria-labelledby="giris-tab">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <form asp-action="AdminGiris" asp-controller="Ogrenci" class="admin-form" method="post">
+                                    <div class="mb-3">
+                                        <label for="tcNo-giris" class="tc-input form-label">TC Kimlik Numarası:</label>
+                                        <input asp-for="TCNo" type="text" class="w-100 p-1 mb-2" id="tcNo-giris" maxlength="11">
+                                        <span asp-validation-for="TCNo" class="text-danger"></span>
+                                    </div>
+
+                                    <label for="password-giris" class="sifre-input form-label">Şifre</label>
+                                    <div class="mb-2 position-relative">
+                                        <input asp-for="Sifre" type="password" class="w-100 p-1" id="password-giris">
+                                        <button type="button" class="btn btn-link position-absolute end-0 top-0 d-flex mt-1 me-2 text-decoration-none">
+                                            <i class="fa-solid fa-eye" style="color: #6b6b6b;"></i>
+                                        </button>
+                                        <span asp-validation-for="Sifre" class="text-danger"></span>
+                                    </div>
+                                    <button type="submit" class="btn-admin-giris btn text-white w-100 mt-3">GİRİŞ YAP</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}                                        

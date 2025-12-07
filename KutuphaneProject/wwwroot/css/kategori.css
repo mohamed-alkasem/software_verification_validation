@@ -1,0 +1,82 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+    --box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+#kategori-section .arama-input {
+    border-radius: 5px;
+    box-shadow:var(--box-shadow);
+    border:0;
+}
+
+#kategori-section .arama-input:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(255, 104, 104, 0.558);
+}
+
+#kategori-section .btn-submit{
+    background-color:var(--orange-color);
+    color:white;
+    transition:all 0.2s linear;
+}
+
+#kategori-section .btn-submit:hover {
+    background-color: var(--dark-color);
+}
+
+#kategori-section .kitap {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+#kategori-section .kitap img {
+    aspect-ratio: 1/1;
+    transition: all 0.4s linear;
+}
+
+#kategori-section .kitap img:hover {
+    transform: scale(1.1);
+}
+
+#kategori-section .content {
+    background-color: #eee;
+}
+
+#kategori-section .content h3 {
+    font-size: 1.1rem;
+    color: var(--orange-color);
+}
+
+#kategori-section .content p {
+    font-size: 0.9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    line-height: 1.2rem;
+    height: 4.7rem;
+}
+
+#kategori-section a.btnFazla {
+    background-color: var(--dark-color);
+    font-size: 0.9rem;
+    width: fit-content;
+    transition: all 0.2s linear;
+}
+
+#kategori-section a.btnFazla:hover {
+    background-color: var(--orange-color);
+}
+
+@media(min-width:768px) {
+    #kategori-section .arama-input {
+        width: 300px;
+    }
+}

@@ -1,0 +1,136 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+/* -----------hero section----------- */
+#hero-section .carousel-inner {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-top: 2px solid var(--orange-color);
+}
+
+#hero-section :where(.carousel-control-prev,
+    .carousel-control-next) {
+    opacity: 1 !important;
+    filter: none !important;
+    width: fit-content;
+}
+
+#hero-section .carousel-caption {
+    width: 130px;
+    height: fit-content;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto 0 0;
+}
+
+#hero-section .carousel-caption :where(h1, h2, p) {
+    text-shadow: 0 0 1px black;
+    line-height: 25px;
+}
+
+#hero-section .carousel-caption :where(h1, h2) {
+    font-size: 1.5rem;
+    line-height: 30px;
+}
+
+#hero-section .carousel-item img {
+    transition: all 0.5s linear;
+    animation-name: scaling;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 0.5s;
+    transform: scale(1.4);
+    animation-fill-mode: both;
+}
+
+@keyframes scaling {
+    to {
+        transform: scale(1);
+    }
+}
+
+@media(min-width:768px) {
+    #hero-section .carousel-caption {
+        width: 330px;
+    }
+}
+
+@media(min-width:1200px) {
+    #hero-section .carousel-caption :where(h1, h2) {
+        font-size: 2.2rem;
+    }
+}
+
+/* hakkinda section */
+#video-section {
+    padding-block: 120px;
+}
+
+#video-section .ipad-frame {
+    background-image: url('../imgs/frame.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    border-radius: 10px !important;
+    width: 100%;
+    aspect-ratio: 3/2;
+    outline: 5px solid rgba(238, 45, 42, 0.667);
+    outline-offset: -15px;
+}
+
+#video-section .inner-frame {
+    background-color: rgba(66, 62, 62, 0.397);
+}
+
+#video-section i {
+    font-size: 50px;
+    aspect-ratio: 1/1;
+    opacity: 0.8;
+    transition: all 0.4s;
+    border-radius: 50%;
+}
+
+#video-section i:hover {
+    color: white !important;
+}
+
+#video-section .hr {
+    height: 2px;
+    width: 100%;
+    background-image: linear-gradient(to right, transparent, black, transparent);
+}
+
+#video-section .btnMore {
+    background-color: var(--dark-color);
+    border-radius: 5px;
+}
+
+#video-section .ipad-frame i {
+    animation-name: fade;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fade {
+    0% {
+        box-shadow: 0 0 0 25px rgba(229, 39, 16, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 0 0 rgba(229, 39, 16, 0.3);
+    }
+
+    100% {
+        box-shadow: 0 0 0px 25px rgba(229, 39, 16, 0.6);
+    }
+}

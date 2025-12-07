@@ -1,0 +1,184 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+/* -----------hero section----------- */
+#hero-section .carousel-inner {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-top: 2px solid var(--orange-color);
+}
+
+#hero-section :where(.carousel-control-prev,
+    .carousel-control-next) {
+    opacity: 1 !important;
+    filter: none !important;
+    width: fit-content;
+}
+
+#hero-section .carousel-caption {
+    width: 130px;
+    height: fit-content;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto 0 0;
+}
+
+#hero-section .carousel-caption :where(h1, h2, p) {
+    line-height: 25px;
+}
+
+#hero-section .carousel-caption :where(h1, h2) {
+    font-size: 1.5rem;
+    line-height: 30px;
+}
+
+#hero-section .carousel-item img {
+    transition: all 0.5s linear;
+    animation-name: scaling;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 0.5s;
+    transform: scale(1.4);
+    animation-fill-mode: both;
+}
+
+@keyframes scaling {
+    to {
+        transform: scale(1);
+    }
+}
+
+@media(min-width:768px) {
+    #hero-section .carousel-caption {
+        width: 330px;
+    }
+}
+
+@media(min-width:1200px) {
+    #hero-section .carousel-caption :where(h1, h2) {
+        font-size: 2.2rem;
+    }
+}
+
+/* -----------yeni kitaplar----------- */
+#yeni-kitaplar-section {
+    padding: 70px 0;
+    background-color: #eeeeee;
+}
+
+#yeni-kitaplar-section h3 {
+    color: var(--dark-color);
+}
+
+#yeni-kitaplar-section h3::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px;
+    width: 80px;
+    height: 3px;
+    background-color: var(--dark-color);
+}
+
+#yeni-kitaplar-section h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 35px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 3px solid white;
+    background-color: var(--orange-color);
+}
+
+#yeni-kitaplar-section .pw-box {
+    max-width: 340px;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    margin: auto;
+}
+
+#yeni-kitaplar-section .pw-box img {
+    width: 100%;
+    height: 300px;
+}
+
+#yeni-kitaplar-section .kitap-bligleri {
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#yeni-kitaplar-section .odunc-al a.alBtn {
+    background-color: var(--dark-color);
+    padding: 5px 20px;
+    width: fit-content;
+    border-radius: 5px;
+    color: white !important;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s linear;
+}
+
+#yeni-kitaplar-section .odunc-al a.alBtn:hover {
+    background-color: var(--orange-color);
+}
+
+#yeni-kitaplar-section .kitap-bligleri h4 {
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 70px;
+}
+
+#yeni-kitaplar-section :where(.pw-new-prev i,
+    .pw-new-next i) {
+    color: var(--orange-color);
+}
+
+#yeni-kitaplar-section .swiper-slide {
+    position: relative;
+    padding: 5px;
+}
+
+#yeni-kitaplar-section .swiper-slide .b-logo {
+    padding: 5px;
+    width: 40px;
+    background-color: #eeeeee;
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: -20px;
+    transition: all 0.4s linear;
+}
+
+#yeni-kitaplar-section .swiper-slide:hover .b-logo {
+    transform-origin: 0% -50% !important;
+    transform: translateY(5px) translateX(-50%) scale(1.1);
+}
+
+#yeni-kitaplar-section .btn-fazla {
+    background-color: var(--dark-color);
+    border-radius: 5px;
+    transition: all 0.2s linear;
+}
+
+#yeni-kitaplar-section .btn-fazla:hover {
+    background-color: var(--orange-color);
+}

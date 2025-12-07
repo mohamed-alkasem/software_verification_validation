@@ -1,0 +1,86 @@
+﻿:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+    --box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.kitap-duzelt-section .hr {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-color);
+}
+
+.kitap-duzelt-section .form-container {
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.kitap-duzelt-section #upload-container8 {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+.kitap-duzelt-section #upload-container8 span {
+    user-select: none;
+}
+
+.kitap-duzelt-section #upload-container8 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.kitap-duzelt-section .plus-icon {
+    font-size: 50px;
+    color: #aaa;
+}
+
+.img-thumbnail{
+    max-width: 200px;
+}
+
+.kitap-duzelt-section .btn-kaydet {
+    border: 0;
+    border-radius: 5px;
+    background-color: var(--orange-color);
+    transition: all 0.2s linear;
+}
+
+.kitap-duzelt-section .btn-kaydet:hover {
+    background-color: var(--dark-color);
+}
+
+.kitap-duzelt-section .ad-input {
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    box-shadow: var(--box-shadow);
+    width: 300px;
+}
+
+.kitap-duzelt-section textarea {
+    border: 0;
+    outline: 0;
+    box-shadow: var(--box-shadow);
+}
+
+.kitap-duzelt-section .btn-dropdown {
+    box-shadow: var(--box-shadow);
+    outline: 0;
+    border: 0;
+}
+
+.kitap-duzelt-section .btn-dropdown:hover {
+    background-color: white;
+    outline: 0;
+}

@@ -1,0 +1,17 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<Kategori>
+
+<ul class="kategori-list list-unstyled d-none mb-0">
+    @foreach (var kategori in Model)
+    {
+        <li class="p-2">
+            <a href="/Ogrenci/OgrenciGiris" class="text-decoration-none">
+                @kategori.Ad
+            </a>
+        </li>
+    }
+</ul>
+@section Scripts
+{
+    <script src="~/js/main.js"></script>
+}

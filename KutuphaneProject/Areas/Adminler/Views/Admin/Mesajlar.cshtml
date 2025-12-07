@@ -1,0 +1,78 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using KutuphaneProject.Models
+@model List<Mesaj>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section id="mesajlar-section" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8 col-xl-7">
+                <h2 class="text-center mb-2">Mesajlarım</h2>
+                <div class="hr mb-3"></div>
+                <div class="d-flex gap-2 justify-content-center">
+                    <input id="adSoyad" type="text" placeholder="Ad ve Soyad ile Filtrele" class="form-control" />
+                    <input id="eposta" type="text" placeholder="E-posta ile Filtrele" class="form-control" />
+                    <input id="icerik" type="text" placeholder="İçerik ile Filtrele" class="form-control" />
+                    <button id="btnYenile" class="btn-yenile text-white">Yenile</button>
+                </div>
+                <div class="mesajlar border border-1 mt-2">
+                    <table id="mesajTable" class="border border-1">
+                        <thead>
+                            <tr>
+                                <th class="border border-1">Ad Soyad</th>
+                                <th class="border border-1">Eposta</th>
+                                <th class="border border-1">İçerik</th>
+                                <th class="border border-1">Mesaj Tarihi</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> 
+</section>
+
+<style>
+    .btn-yenile {
+        width: 200px;
+        border: 0;
+        border-radius: 5px;
+        background-color: #e52710;
+        transition: all 0.2s linear;
+    }
+</style>
+
+@section Scripts
+{
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+    <script type="text/javascript">
+        var table = $("#mesajTable").DataTable(
+            {
+                "serverSide": true,
+                "paging": true,
+                "processing": true,
+                "ajax": {
+                    "url": "@Url.Action("MesajListele", "Admin")",
+                    "type": "POST",
+                    "data": function (d) {
+                        d.adSo = $("#adSoyad").val();
+                        d.marka = $("#eposta").val();
+                        d.model = $("#icerik").val();
+                    }
+                },
+                "columns": [
+                    { data: 'adSoyad', className: 'border border-1' },
+                    { data: 'eposta', className: 'border border-1' },
+                    { data: 'icerik', className: 'border border-1' },
+                    { data: 'mesajTarihi', className: 'border border-1' },
+                ]
+            }
+        );
+        $("#btnYenile").click(function () {
+            table.ajax.reload();
+        });
+    </script>
+}

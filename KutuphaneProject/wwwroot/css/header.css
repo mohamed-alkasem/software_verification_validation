@@ -1,0 +1,317 @@
+:root {
+    --orange-color: #e52710;
+    --dark-color: #373737;
+    --box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+header .top-bar {
+    background-color: var(--orange-color);
+    border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+}
+
+header .top-bar .icon-container {
+    background-color: white;
+    height: 35px;
+    padding: 5px 10px;
+    color: var(--dark-color);
+    border-radius: 30px;
+    transition: all 0.3s linear;
+}
+
+header .btn-option {
+    padding: 5px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+header .btn-cikis {
+    border-radius: 50%;
+    transition: all 0.2s linear;
+}
+
+header .mesajlar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    transition: all 0.2s linear;
+}
+
+header .top-bar .icon-container:hover,
+header .btn-cikis:hover,
+header .mesajlar:hover {
+    background-color: var(--dark-color) !important;
+    color: white !important;
+}
+
+header .top-bar .icon-container i {
+    transition: all 0.3s linear;
+}
+
+header .top-bar .icon-container:hover i,
+header .top-bar .btn-cikis:hover i,
+header .mesajlar:hover i {
+    background-color: var(--dark-color) !important;
+    color: white !important;
+}
+
+header .nav-item,
+header .btn-kategori,
+header .btn-kitap {
+    transition: all 0.3s linear;
+    border-radius: 30px;
+}
+
+header .btn-kategori,
+header .btn-kitap {
+    color: gray;
+}
+
+header .offcanvas .nav-item:hover,
+header .nav-item:hover {
+    background-color: #eee !important;
+}
+
+header .kategori-list li:hover,
+header .kitap-list li:hover {
+    background-color: #eee;
+}
+
+header .nav-item a {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #808080;
+}
+
+header .nav-item:hover a {
+    color: grey;
+}
+
+
+header .kategori-list,
+header .kitap-list {
+    box-shadow: var(--box-shadow);
+}
+
+
+header .kategori-list a,
+header .kitap-list a {
+    color: gray;
+}
+
+header .icons a {
+    background-color: var(--dark-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s linear;
+}
+
+header .dropdown-menu {
+    border-radius: 0 !important;
+    padding-block: 0 !important;
+    border: 0;
+    margin-top: 5px !important;
+    box-shadow: var(--box-shadow);
+}
+
+header .btn-giris .dropdown-menu {
+    --bs-dropdown-min-width: 100px;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translate(-50%, 0) !important;
+}
+
+header button.dropdown-item {
+    color: #808080;
+}
+
+header button.dropdown-item:hover {
+    color: #808080;
+}
+
+header .dropdown-menu a {
+    font-weight: 400 !important;
+}
+
+header .offcanvas-start {
+    width: 270px !important;
+}
+
+header .btnToggler {
+    background-color: transparent;
+}
+
+header .offcanvas .btnClose {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+}
+
+header .offcanvas .hr {
+    height: 1px;
+    width: 100%;
+    background-image: linear-gradient(to right, transparent, var(--orange-color), transparent);
+}
+
+header .offcanvas .tags a {
+    background-color: var(--orange-color);
+    font-size: 0.7rem;
+}
+
+/* ***** kategori ekleme modal ***** */
+.kategori-modal #upload-container1 {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #f9f9f9;
+}
+
+.kategori-modal #upload-container1 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.kategori-modal #file-input1 {
+    display: none;
+}
+
+.kategori-modal .plus-icon {
+    font-size: 50px;
+    color: #aaa;
+}
+
+.kategori-modal .btn-kategori-ekle {
+    border: 0;
+    border-radius: 5px;
+    background-color: var(--orange-color);
+    transition: all 0.2s linear;
+}
+
+.kategori-modal .ad-input {
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    box-shadow: var(--box-shadow);
+    width: 300px;
+}
+
+/* ***** kitap ekleme modal ***** */
+.kitap-modal #upload-container2 {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #f9f9f9;
+}
+
+.kitap-modal #upload-container2 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.kitap-modal #file-input2 {
+    display: none;
+}
+
+.kitap-modal .plus-icon {
+    font-size: 50px;
+    color: #aaa;
+}
+
+.kitap-modal .btn-kitap-ekle {
+    border: 0;
+    border-radius: 5px;
+    background-color: var(--orange-color);
+    transition: all 0.2s linear;
+}
+
+.kitap-modal .btn-kitap-ekle:hover,
+.kategori-modal .btn-kategori-ekle:hover {
+    background-color: var(--dark-color);
+}
+
+.kitap-modal .ad-input {
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    box-shadow: var(--box-shadow);
+    width: 300px;
+}
+
+.kitap-modal textarea {
+    border: 0;
+    outline: 0;
+    box-shadow: var(--box-shadow);
+}
+
+.kitap-modal .btn-dropdown {
+    box-shadow: var(--box-shadow);
+    outline: 0;
+    border: 0;
+}
+
+.kitap-modal .btn-dropdown:hover {
+    background-color: white;
+    outline: 0;
+}
+
+/* **** Kategori Düzeltme modal **** */
+.kategori-duzeltme-modal #upload-container4 {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #f9f9f9;
+}
+
+.kategori-duzeltme-modal #upload-container4 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.kategori-duzeltme-modal #file-input4 {
+    display: none;
+}
+
+.kategori-duzeltme-modal .plus-icon {
+    font-size: 50px;
+    color: #aaa;
+}
+
+.kategori-duzeltme-modal .ad-input {
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    box-shadow: var(--box-shadow);
+    width: 300px;
+}

@@ -1,0 +1,90 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using KutuphaneProject.Models;
+@model Kitap
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="kitap-duzelt-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-8 col-xxl-7">
+                <h2 class="title text-center">Kitap Düzelt</h2>
+                <div class="hr mb-5"></div>
+                <div class="form-container p-4">
+                    <div class="d-flex gap-3 gap-lg-5">
+                        <form asp-area="Adminler" asp-controller="Admin" asp-action="KitapDuzelt" method="post" enctype="multipart/form-data" class="flex-grow-1" id="kitapDuzeltForm">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Id" />
+
+                            <div id="upload-container8" class="mb-4 mx-auto">
+                                <span class="plus-icon">+</span>
+                            </div>
+                            <input asp-for="clientFile" type="file" class="mb-2" id="file-input" accept="image/*">
+                            <span asp-validation-for="clientFile" class="text-danger d-block"></span>
+                            <span id="typeError1" class="text-danger d-none">Lütfen sadece JPEG, PNG formatında bir resim seçin.</span>
+
+                            <label class="d-block mb-2">Kitap Adı:</label>
+                            <input asp-for="Ad" class="ad-input d-block mb-3" type="text" id="book-name">
+                            <span asp-validation-for="Ad" class="text-danger d-block mb-2"></span>
+
+                            <label class="d-block mb-2">Açıklama:</label>
+                            <textarea asp-for="Aciklama" class="mb-2 w-100 p-2" rows="7" style="resize: none" id="description"></textarea>
+                            <span asp-validation-for="Aciklama" class="text-danger d-block mb-2"></span>
+
+                            <button type="submit" class="btn-kaydet d-block text-white py-1 px-3 mx-auto">Kaydet</button>
+                        </form>
+                            <div class="mb-4 mx-auto d-none d-md-block">
+                                <img class="img-thumbnail" src="@Model.ImageSrc" />
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .swal-custom-success-button {
+        background-color: green !important;
+        color: white !important;
+        border: none !important;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.getElementById("kitapDuzeltForm").addEventListener("submit", function (event) {
+            const fileInput1 = document.getElementById("file-input");
+            const file1 = fileInput1.files[0];
+
+            if (file1) {
+                const allowedTypes1 = ["image/jpeg", "image/png", "image/gif"];
+                if (!allowedTypes1.includes(file1.type)) {
+                    document.getElementById("typeError1").classList.replace("d-none","d-block");
+                    event.preventDefault(); // Form gönderimini durdur
+                    return;
+                }
+                document.getElementById("typeError1").classList.add("d-none");
+            }
+        });
+    </script>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'success',
+                title: 'Başarılı!',
+                html: '@Html.Raw(TempData["SuccessMessage"])',
+                confirmButtonText: 'Tamam',
+                customClass: {
+                    confirmButton: 'swal-custom-success-button'
+                }
+            });
+        </script>
+    }
+}

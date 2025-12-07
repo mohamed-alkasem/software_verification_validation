@@ -1,0 +1,52 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<Kitap>
+
+<section id="kategori-section" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <h2 class="mb-4">@ViewBag.KategoriAdi</h2>
+                    </div>
+                    <div class="col-6">
+                        <form asp-controller="Ogrenci" asp-action="AramaSonuclari" class="text-end position-relative mb-3 mb-sm-0" method="get">
+                            <input type="hidden" name="kategoriId" value="@ViewBag.KategoriId" />
+                            <div class="d-flex justify-content-end align-items-center">
+                                <input class="arama-input p-1" type="text" name="aramaMetni" placeholder="Kitap Ara" required>
+                                <button type="submit" class="btn-submit btn ms-2">Ara</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row justify-content-center justify-content-sm-start g-4 g-xl-5">
+                    @foreach (var kitap in Model)
+                    {
+                        <div class="col-8 col-sm-6 col-lg-4">
+                            <div class="d-flex justify-content-center justify-content-md-between flex-wrap">
+                                <div class="kitap">
+                                    <div class="d-block overflow-hidden">
+                                        <img class="w-100" src="@kitap.ImageSrc" alt="@kitap.Ad">
+                                    </div>
+                                    <div class="content p-3">
+                                        <h3 class="mb-3 text-center">@kitap.Ad</h3>
+                                        <p>@kitap.Aciklama</p>
+                                        <a class="btnFazla rounded-pill text-white d-block text-decoration-none py-1 px-3"
+                                           href="/Ogrenci/KitapOgrenci?KitapId=@kitap.Id">
+                                            Daha fazla
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts
+{
+    <script src="~/js/main.js"></script>
+}
