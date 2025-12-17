@@ -247,6 +247,7 @@ C:\Users\hmalk\Desktop\4. sınıf\yazılım_geçerleme\proje\KutuphaneProject\Ku
 C:\Users\hmalk\Desktop\4. sınıf\yazılım_geçerleme\proje\KutuphaneProject\KutuphaneProject\obj\Debug\net9.0\KutuphaneProject.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\hmalk\Desktop\4. sınıf\yazılım_geçerleme\proje\KutuphaneProject\KutuphaneProject\obj\Debug\net9.0\KutuphaneProject.RazorAssemblyInfo.cache
 C:\Users\hmalk\Desktop\4. sınıf\yazılım_geçerleme\proje\KutuphaneProject\KutuphaneProject\obj\Debug\net9.0\KutuphaneProject.RazorAssemblyInfo.cs
+C:\Users\hmalk\Desktop\4. sınıf\yazılım_geçerleme\proje\KutuphaneProject\KutuphaneProject\obj\Debug\net9.0\KutuphaneProject.sourcelink.json
 C:\Users\hmalk\Desktop\4. sınıf\yazılım_geçerleme\proje\KutuphaneProject\KutuphaneProject\obj\Debug\net9.0\rjimswa.dswa.cache.json
 C:\Users\hmalk\Desktop\4. sınıf\yazılım_geçerleme\proje\KutuphaneProject\KutuphaneProject\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\hmalk\Desktop\4. sınıf\yazılım_geçerleme\proje\KutuphaneProject\KutuphaneProject\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
