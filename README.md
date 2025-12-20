@@ -105,7 +105,7 @@ AŞAMA 2 - GELİŞTİRİCİ & QA EKİBİ DOKÜMANLARI
    - Kullanıcı onay formu
 
 8. Bug_Report.xlsx
-   - 5 hata raporu detaylı
+   - 4 hata raporu detaylı
    - Çözüm önerileri
 
 =====================================================
