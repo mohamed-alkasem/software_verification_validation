@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers; // الآن سيعمل هذا السطر بعد التثبيت
+using SeleniumExtras.WaitHelpers; // Kurulumdan sonra bu satır çalışacak
 
 namespace SeleniumSystemTests.Pages
 {
@@ -8,7 +8,7 @@ namespace SeleniumSystemTests.Pages
     {
         private readonly IWebDriver _driver;
         private readonly WebDriverWait _wait;
-        // الصفحة الرئيسية
+        // Ana sayfa
         private readonly string _url = $"{Fixtures.WebDriverFixture.BaseUrl}/";
 
         public HomePage(IWebDriver driver)
@@ -17,7 +17,7 @@ namespace SeleniumSystemTests.Pages
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
         }
 
-        // --- دوال الاختبار الأول (HomeTests) ---
+        // --- İlk test fonksiyonları (HomeTests) ---
         public void Navigate()
         {
             _driver.Navigate().GoToUrl(_url);
@@ -28,12 +28,12 @@ namespace SeleniumSystemTests.Pages
             return _driver.Title;
         }
 
-        // --- دوال اختبار تسجيل الدخول (OgrenciLoginTests) ---
+        // --- Giriş testi fonksiyonları (OgrenciLoginTests) ---
         public bool IsLogoutButtonVisible()
         {
             try
             {
-                // ننتظر زر الخروج (btn-cikis)
+                // Çıkış butonunu bekliyoruz (btn-cikis)
                 var logoutBtn = _wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("btn-cikis")));
                 return logoutBtn.Displayed;
             }

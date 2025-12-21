@@ -20,27 +20,27 @@ namespace SeleniumSystemTests.Tests
         [Fact]
         public void FullScenario_Login_And_BorrowBook_ShouldShowSweetAlert()
         {
-            // 1. Arrange (بيانات الدخول والكتاب)
+            // 1. Arrange (Giriş ve kitap bilgileri)
             string user = "2212721320";
             string pass = "Alkasem.00";
-            int kitapId = 2; // تأكد أن لديك كتاب في الداتابيز بهذا الآيدي
+            int kitapId = 2; // Veritabanında bu ID'ye sahip bir kitap olduğundan emin olun
 
-            // 2. Act (تنفيذ الخطوات)
-            // أ) تسجيل الدخول
+            // 2. Act (Adımları uygula)
+            // a) Giriş yap
             _loginPage.Navigate();
             _loginPage.Login(user, pass);
 
-            // ب) الذهاب للكتاب
+            // b) Kitaba git
             _bookPage.GoToBook(kitapId);
 
-            // ج) الضغط على زر الاستعارة
+            // c) Ödünç alma butonuna tıkla
             _bookPage.ClickBorrow();
 
-            // 3. Assert (التحقق)
-            // التحقق من ظهور نافذة SweetAlert
-            Assert.True(_bookPage.IsSuccessPopupDisplayed(), "فشل! لم تظهر نافذة التنبيه (SweetAlert).");
+            // 3. Assert (Kontrol)
+            // SweetAlert penceresinin göründüğünü kontrol et
+            Assert.True(_bookPage.IsSuccessPopupDisplayed(), "Başarısız! Uyarı penceresi (SweetAlert) görünmedi.");
 
-            // التحقق من عنوان الرسالة (يجب أن يكون 'Başarılı!')
+            // Mesaj başlığını kontrol et ('Başarılı!' olmalı)
             string alertTitle = _bookPage.GetPopupTitle();
             Assert.Contains("Başarılı", alertTitle);
         }

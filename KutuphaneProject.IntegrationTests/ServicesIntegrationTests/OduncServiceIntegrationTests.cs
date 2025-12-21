@@ -30,7 +30,7 @@ namespace KutuphaneProject.IntegrationTests.ServicesIntegrationTests
 
         private void InitializeTestData()
         {
-            // تنظيف أي بيانات قديمة
+            // Eski verileri temizle
             _context.Database.EnsureDeleted();
             _context.Database.EnsureCreated();
 
@@ -38,7 +38,7 @@ namespace KutuphaneProject.IntegrationTests.ServicesIntegrationTests
             var kategori = new Kategori
             {
                 Ad = "Test Kategori",
-                Image = new byte[] { 1, 2, 3, 4, 5 } // ✅ اضف Image (byte array)
+                Image = new byte[] { 1, 2, 3, 4, 5 } // ✅ Image ekle (byte array)
             };
             _context.Kategoriler.Add(kategori);
             _context.SaveChanges();
@@ -59,7 +59,7 @@ namespace KutuphaneProject.IntegrationTests.ServicesIntegrationTests
                 Aciklama = "Test Kitap Açıklama",
                 EklemeTarihi = DateTime.Now,
                 KategoriId = kategori.Id,
-                Image = new byte[] { 6, 7, 8, 9, 10 } // ✅ اضف Image
+                Image = new byte[] { 6, 7, 8, 9, 10 } // ✅ Image ekle
             };
             _context.Kitaplar.Add(kitap);
 
@@ -96,8 +96,8 @@ namespace KutuphaneProject.IntegrationTests.ServicesIntegrationTests
             Assert.Equal(kitap.Ad, oduncler.First().Name);
         }
 
-        // ... باقي الاختبارات بنفس الطريقة
-        // فقط تأكد من إضافة KartNo لكل Odunc
+        // ... Diğer testler aynı şekilde
+        // Sadece her Odunc için KartNo eklediğinizden emin olun
 
         public void Dispose()
         {

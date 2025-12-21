@@ -29,11 +29,11 @@ namespace SeleniumSystemTests.Tests
             _loginPage.Login(realUser, realPass);
 
             // 3. Assert
-            // الدليل القاطع هو ظهور زر الخروج
+            // Kesin kanıt çıkış butonunun görünmesidir
             Assert.True(_homePage.IsLogoutButtonVisible(), "Login Failed: Logout button not visible!");
 
-            // تعديل: بدلاً من إجبار الرابط أن يحتوي على Ogrenci، سنتأكد فقط أننا لسنا في صفحة الدخول
-            // هذا السطر يكفي للتأكد أننا انتقلنا لصفحة جديدة
+            // Değişiklik: Linkin Ogrenci içermesini zorlamak yerine, sadece giriş sayfasında olmadığımızdan emin oluyoruz
+            // Yeni bir sayfaya geçtiğimizi doğrulamak için bu satır yeterli
             Assert.NotEqual(_fixture.Driver.Url, "https://localhost:7123/Ogrenci/OgrenciGiris");
         }
     }

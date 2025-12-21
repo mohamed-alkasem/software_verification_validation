@@ -5,22 +5,22 @@ using KutuphaneProject.Models;
 
 namespace KutuphaneProject.IntegrationTests.DatabaseTests
 {
-    // هذا أبسط Integration Test ممكن
+    // Bu mümkün olan en basit Integration Test
     public class KitapDatabaseIntegrationTests
     {
         [Fact]
         public void Can_Connect_To_InMemory_Database()
         {
-            // 1. أنشئ InMemory Database
+            // 1. InMemory Database oluştur
             var options = new DbContextOptionsBuilder<KutuphaneDbContext>()
                 .UseInMemoryDatabase(databaseName: "TestDB_Connection")
                 .Options;
 
-            // 2. جرب تتصل
+            // 2. Bağlanmayı dene
             using var context = new KutuphaneDbContext(options);
             var canConnect = context.Database.CanConnect();
 
-            // 3. تأكد أن الاتصال ناجح
+            // 3. Bağlantının başarılı olduğundan emin ol
             Assert.True(canConnect);
         }
     }

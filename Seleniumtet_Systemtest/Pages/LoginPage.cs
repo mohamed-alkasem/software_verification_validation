@@ -17,23 +17,23 @@ namespace SeleniumSystemTests.Pages
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
         }
 
-        // --- 1. دوال التوجيه (لحل مشكلة CS1061) ---
+        // --- 1. Yönlendirme fonksiyonları (CS1061 sorununu çözmek için) ---
 
-        // هذه الدالة تطلبها ملفات BorrowProcessTests
+        // Bu fonksiyon BorrowProcessTests dosyaları tarafından istenir
         public void Navigate()
         {
             _driver.Navigate().GoToUrl($"{WebDriverFixture.BaseUrl}/Ogrenci/OgrenciGiris");
         }
 
-        // هذه الدالة تطلبها ملفات AdminTests
+        // Bu fonksiyon AdminTests dosyaları tarafından istenir
         public void GoToLogin()
         {
             _driver.Navigate().GoToUrl($"{WebDriverFixture.BaseUrl}/Ogrenci/AdminGiris");
         }
 
-        // --- 2. دوال تسجيل الدخول ---
+        // --- 2. Giriş fonksiyonları ---
 
-        // للطلاب (تحافظ على عمل الكود القديم)
+        // Öğrenciler için (eski kodun çalışmasını korur)
         public void Login(string studentNo, string password)
         {
             if (!_driver.Url.Contains("OgrenciGiris")) Navigate();
@@ -51,7 +51,7 @@ namespace SeleniumSystemTests.Pages
             ClickWithRetry(btn);
         }
 
-        // للأدمن (للكود الجديد)
+        // Admin için (yeni kod için)
         public void LoginAsAdmin(string tcNo, string password)
         {
             if (!_driver.Url.Contains("AdminGiris")) GoToLogin();
@@ -69,7 +69,7 @@ namespace SeleniumSystemTests.Pages
             ClickWithRetry(btn);
         }
 
-        // دالة مساعدة للنقر
+        // Tıklama için yardımcı fonksiyon
         private void ClickWithRetry(IWebElement element)
         {
             try
@@ -82,7 +82,7 @@ namespace SeleniumSystemTests.Pages
             }
             catch (StaleElementReferenceException)
             {
-                // محاولة أخيرة لو العنصر اختفى ورجع
+                // Element kaybolup geri döndüyse son deneme
                 _wait.Until(ExpectedConditions.ElementToBeClickable(element)).Click();
             }
         }

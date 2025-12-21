@@ -14,7 +14,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 
         public OgrenciServiceIntegrationTests()
         {
-            // إنشاء In-Memory Database مباشرة
+            // Doğrudan In-Memory Database oluştur
             var options = new DbContextOptionsBuilder<KutuphaneDbContext>()
                 .UseInMemoryDatabase(databaseName: $"OgrenciTest_{Guid.NewGuid()}")
                 .Options;
@@ -26,11 +26,11 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 
         private void SeedTestData(KutuphaneDbContext context)
         {
-            // تنظيف أي بيانات قديمة
+            // Eski verileri temizle
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
-            // 1. أولاً: إضافة Kategoriler (مطلوبة حتى لو ما استخدمناها هنا)
+            // 1. Önce: Kategoriler ekle (burada kullanmasak bile gerekli)
             var kategori = new Kategori
             {
                 Id = 1,
@@ -40,7 +40,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
             context.Kategoriler.Add(kategori);
             context.SaveChanges();
 
-            // 2. ثانياً: إضافة Ogrenciler
+            // 2. İkinci: Ogrenciler ekle
             var ogrenciler = new List<Ogrenci>
             {
                 new Ogrenci
@@ -55,7 +55,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
                     Id = 2,
                     AdSoyad = "Mehmet Demir",
                     OgrenciNo = "2023002",
-                    BorcMiktari = 10  // تم التعديل من 10.5m إلى 10 لأن BorcMiktari من نوع int
+                    BorcMiktari = 10  // BorcMiktari int tipinde olduğu için 10.5m'den 10'a düzeltildi
                 }
             };
 
@@ -98,8 +98,8 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 
             // Assert
             Assert.NotNull(result);
-            Assert.Equal(0, result.Id); // Ogrenci فارغ جديد
-            Assert.Null(result.AdSoyad); // أو string.Empty
+            Assert.Equal(0, result.Id); // Yeni boş Ogrenci
+            Assert.Null(result.AdSoyad); // veya string.Empty
             Assert.Null(result.OgrenciNo);
         }
 
@@ -115,7 +115,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
             // Assert
             Assert.NotNull(result);
             Assert.Equal("Mehmet Demir", result.AdSoyad);
-            Assert.Equal(10, result.BorcMiktari); // تم التعديل من 10.5m إلى 10
+            Assert.Equal(10, result.BorcMiktari); // 10.5m'den 10'a düzeltildi
             Assert.Equal("2023002", result.OgrenciNo);
         }
 
@@ -143,7 +143,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
 
-            // التأكد من وجود البيانات الصحيحة
+            // Doğru verilerin mevcut olduğundan emin ol
             var ogrenci1 = result.First(o => o.Id == 1);
             var ogrenci2 = result.First(o => o.Id == 2);
 
@@ -190,7 +190,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
             Assert.Equal("2023003", ogrenciInDb.OgrenciNo);
             Assert.Equal(0, ogrenciInDb.BorcMiktari);
 
-            // التأكد من زيادة العدد
+            // Sayının arttığından emin ol
             var tumOgrenciler = await _ogrenciService.GetOgrenciler();
             Assert.Equal(initialCount + 1, tumOgrenciler.Count);
         }
@@ -203,7 +203,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
             {
                 Id = 4,
                 AdSoyad = "Ali Veli",
-                OgrenciNo = "2023001", // نفس رقم طالب موجود
+                OgrenciNo = "2023001", // Mevcut öğrenci numarası ile aynı
                 BorcMiktari = 0
             };
 
@@ -214,8 +214,8 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
             var ogrenciler = await _ogrenciService.GetOgrenciler();
             var ogrenciWithDuplicateNo = ogrenciler.Where(o => o.OgrenciNo == "2023001").ToList();
 
-            // قد يكون مسموحاً بتكرار رقم الطالب أو لا، حسب منطق تطبيقك
-            // هذا الاختبار فقط للتأكد من عدم حدوث exception
+            // Öğrenci numarası tekrarına izin verilip verilmediği uygulama mantığınıza bağlıdır
+            // Bu test sadece exception oluşmadığından emin olmak içindir
             Assert.True(ogrenciler.Count > 2);
         }
 
@@ -239,7 +239,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
             Assert.NotNull(updatedOgrenci);
             Assert.Equal("Ahmet Yılmaz (Güncellendi)", updatedOgrenci.AdSoyad);
             Assert.Equal(5, updatedOgrenci.BorcMiktari);
-            Assert.Equal("2023001", updatedOgrenci.OgrenciNo); // يجب أن يبقى كما هو
+            Assert.Equal("2023001", updatedOgrenci.OgrenciNo); // Aynı kalmalı
         }
 
         [Fact]
@@ -261,7 +261,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
             // Act
             await _ogrenciService.OgrenciyiGuncelle(invalidOgrenci);
 
-            // Assert - التأكد من أن البيانات الأصلية لم تتغير
+            // Assert - Orijinal verilerin değişmediğinden emin ol
             var sameOgrenci = await _context.Ogrenciler.FindAsync(1);
             Assert.Equal(originalAdSoyad, sameOgrenci.AdSoyad);
             Assert.Equal(originalBorc, sameOgrenci.BorcMiktari);
@@ -272,14 +272,14 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
         public async Task OgrenciyiGuncelle_ShouldOnlyUpdateProvidedFields()
         {
             // Arrange
-            // أولاً: احفظ البيانات الأصلية
+            // Önce: Orijinal verileri kaydet
             var originalOgrenci = await _ogrenciService.GetOgrenciById(2);
 
             var guncellenecekOgrenci = new Ogrenci
             {
                 Id = 2,
                 AdSoyad = "Mehmet Demir (Güncellendi)",
-                // لم نزود OgrenciNo
+                // OgrenciNo sağlamadık
                 BorcMiktari = 20
             };
 
@@ -291,7 +291,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
             Assert.NotNull(updatedOgrenci);
             Assert.Equal("Mehmet Demir (Güncellendi)", updatedOgrenci.AdSoyad);
             Assert.Equal(20, updatedOgrenci.BorcMiktari);
-            // OgrenciNo يجب أن يبقى كما هو لأننا لم نزوده
+            // OgrenciNo sağlamadığımız için aynı kalmalı
             Assert.Equal("2023002", updatedOgrenci.OgrenciNo);
         }
 

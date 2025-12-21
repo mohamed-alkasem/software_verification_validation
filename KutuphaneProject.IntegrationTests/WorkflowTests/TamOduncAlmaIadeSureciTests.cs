@@ -22,7 +22,7 @@ namespace KutuphaneProject.IntegrationTests.WorkflowTests
 
             _context = new KutuphaneDbContext(options);
 
-            // إضافة البيانات الأساسية أولاً
+            // Önce temel verileri ekle
             InitializeTestData();
 
             _kitapService = new KitapService(_context);
@@ -32,11 +32,11 @@ namespace KutuphaneProject.IntegrationTests.WorkflowTests
 
         private void InitializeTestData()
         {
-            // تنظيف
+            // Temizle
             _context.Database.EnsureDeleted();
             _context.Database.EnsureCreated();
 
-            // 1. إضافة Kategori أولاً
+            // 1. Önce Kategori ekle
             var kategori = new Kategori
             {
                 Ad = "Bilgisayar",
@@ -195,7 +195,7 @@ namespace KutuphaneProject.IntegrationTests.WorkflowTests
             var kayitliOgrenci2 = await _ogrenciService.GetOgrenciByOgrenciNo("20241225004");
             var kayitliKitap = (await _kitapService.GetKitaplar()).First(k => k.Ad == "Tek Nüsha Kitap");
 
-            // Act: نفس الكتاب إعارة مرتين
+            // Act: Aynı kitabı iki kez ödünç al
             var odunc1 = new Odunc
             {
                 OgrenciId = kayitliOgrenci1.Id,
@@ -210,7 +210,7 @@ namespace KutuphaneProject.IntegrationTests.WorkflowTests
             };
             await _oduncService.OduncEkle(odunc1);
 
-            // المحاولة الثانية
+            // İkinci deneme
             var odunc2 = new Odunc
             {
                 OgrenciId = kayitliOgrenci2.Id,

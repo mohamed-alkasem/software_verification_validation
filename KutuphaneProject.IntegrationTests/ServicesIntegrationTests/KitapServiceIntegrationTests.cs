@@ -14,27 +14,27 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 
 		public KitapServiceIntegrationTests()
 		{
-			// إنشاء In-Memory Database
+			// In-Memory Database oluştur
 			var options = new DbContextOptionsBuilder<KutuphaneDbContext>()
 				.UseInMemoryDatabase(databaseName: $"KitapTest_{Guid.NewGuid()}")
 				.Options;
 
 			_context = new KutuphaneDbContext(options);
 
-			// إضافة البيانات الاختبارية
+			// Test verilerini ekle
 			SeedTestData(_context);
 
-			// إنشاء Service للاختبار
+			// Test için Service oluştur
 			_kitapService = new KitapService(_context);
 		}
 
 		private void SeedTestData(KutuphaneDbContext context)
 		{
-			// تنظيف أي بيانات قديمة
+			// Eski verileri temizle
 			context.Database.EnsureDeleted();
 			context.Database.EnsureCreated();
 
-			// 1. أولاً: إضافة Kategoriler
+			// 1. Önce: Kategoriler ekle
 			var kategori1 = new Kategori
 			{
 				Id = 1,
@@ -50,9 +50,9 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 			};
 
 			context.Kategoriler.AddRange(kategori1, kategori2);
-			context.SaveChanges(); // حفظ الفئات أولاً
+			context.SaveChanges(); // Önce kategorileri kaydet
 
-			// 2. ثانياً: إضافة Kitaplar
+			// 2. İkinci: Kitaplar ekle
 			var kitaplar = new List<Kitap>
 			{
 				new Kitap
@@ -122,7 +122,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 
 			// Assert
 			Assert.NotNull(result);
-			Assert.Equal(0, result.Id); // Kitap فارغ جديد
+			Assert.Equal(0, result.Id); // Yeni boş Kitap
 		}
 
 		[Fact]
@@ -147,7 +147,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 
 			// Assert
 			Assert.NotNull(result);
-			Assert.Equal(2, result.Count); // كتابان في فئة Roman
+			Assert.Equal(2, result.Count); // Roman kategorisinde iki kitap
 			Assert.All(result, k => Assert.Equal(kategoriId, k.KategoriId));
 		}
 
@@ -175,7 +175,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 			{
 				Id = 4,
 				Ad = "Yeni Test Kitabı",
-				KategoriId = 1, // مرتبط بـ Kategori موجود
+				KategoriId = 1, // Mevcut Kategori ile ilişkili
 				Aciklama = "Test açıklama",
 				Image = TestDataExtensions.CreateDefaultImage(),
 				EklemeTarihi = DateTime.Now
@@ -190,7 +190,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 			Assert.Equal("Yeni Test Kitabı", kitapInDb.Ad);
 			Assert.Equal(1, kitapInDb.KategoriId);
 
-			// التأكد من زيادة العدد
+			// Sayının arttığından emin ol
 			var kitaplar = await _kitapService.GetKitaplar();
 			Assert.Equal(4, kitaplar.Count);
 		}
@@ -203,20 +203,20 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 			{
 				Id = 5,
 				Ad = "Kitap with Invalid Kategori",
-				KategoriId = 999, // Kategori غير موجودة
+				KategoriId = 999, // Mevcut olmayan Kategori
 				Aciklama = "Test",
 				Image = TestDataExtensions.CreateDefaultImage(),
 				EklemeTarihi = DateTime.Now
 			};
 
 			// Act & Assert
-			// قد ترمي exception أو تفشل بشكل صامت حسب التطبيق
+			// Uygulamaya göre exception fırlatabilir veya sessizce başarısız olabilir
 			var exception = await Record.ExceptionAsync(() => _kitapService.KitapEkle(yeniKitap));
 
-			// يمكنك التحقق من السلوك المتوقع
+			// Beklenen davranışı kontrol edebilirsiniz
 			if (exception != null)
 			{
-				// إذا كان يجب أن ترمي exception
+				// Exception fırlatması gerekiyorsa
 				Assert.Contains("foreign key", exception.Message, StringComparison.OrdinalIgnoreCase);
 			}
 		}
@@ -255,7 +255,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 
 			var invalidKitap = new Kitap
 			{
-				Id = 999, // Kitap غير موجود
+				Id = 999, // Mevcut olmayan Kitap
 				Ad = "Var Olmayan Kitap",
 				KategoriId = 1,
 				Aciklama = "Test",
@@ -266,7 +266,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 			// Act
 			await _kitapService.KitapGuncelle(invalidKitap);
 
-			// Assert - التأكد من أن البيانات الأصلية لم تتغير
+			// Assert - Orijinal verilerin değişmediğinden emin ol
 			var sameKitap = await _kitapService.GetKitapById(1);
 			Assert.Equal(originalAd, sameKitap.Ad);
 		}
@@ -302,7 +302,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 			// Assert
 			Assert.Null(exception);
 
-			// التأكد من أن العدد لم يتغير
+			// Sayının değişmediğinden emin ol
 			var kitaplar = await _kitapService.GetKitaplar();
 			Assert.Equal(initialCount, kitaplar.Count);
 		}
@@ -319,7 +319,7 @@ namespace KutuphaneProject.IntegrationTests.ServiceIntegrationTests
 
 			// Assert
 			Assert.NotNull(result);
-			Assert.Equal(2, result.Count); // جميع الكتب في فئة Roman
+			Assert.Equal(2, result.Count); // Roman kategorisindeki tüm kitaplar
 		}
 
 		[Fact]

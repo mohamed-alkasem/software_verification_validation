@@ -7,11 +7,11 @@ namespace KutuphaneProject.IntegrationTests.TestUtilities
     {
         public static void SeedTestData(KutuphaneDbContext context)
         {
-            // إضافة فئة
+            // Kategori ekle
             var kategori = new Kategori { Id = 1, Ad = "Roman" };
             context.Kategoriler.Add(kategori);
 
-            // إضافة كتب باستخدام الـ extension method
+            // Extension method kullanarak kitapları ekle
             var kitaplar = new List<Kitap>
     {
         TestDataExtensions.CreateTestKitap(1, "Suc ve Ceza", 1),
@@ -20,7 +20,7 @@ namespace KutuphaneProject.IntegrationTests.TestUtilities
     };
             context.Kitaplar.AddRange(kitaplar);
 
-            // إضافة طلاب
+            // Öğrencileri ekle
             var ogrenciler = new List<Ogrenci>
     {
         TestDataExtensions.CreateTestOgrenci(1, "Ahmet Yılmaz", "2023001"),

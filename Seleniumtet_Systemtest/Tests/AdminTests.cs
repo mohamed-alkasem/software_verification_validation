@@ -26,14 +26,14 @@ namespace SeleniumSystemTests.Tests
         [Fact]
         public void Admin_AddCategory_Test()
         {
-            // 1. ضمان تسجيل الدخول
+            // 1. Giriş yapıldığından emin ol
             EnsureLogin();
 
-            // 2. الانتقال لصفحة إضافة التصنيف
+            // 2. Kategori ekleme sayfasına git
             _fixture.Driver.Navigate().GoToUrl($"{WebDriverFixture.BaseUrl}/Adminler/Admin/KategoriEkle");
 
-            // 3. تعبئة البيانات وحفظ التصنيف
-            CreateCategory("تصنيف xUnit نهائي");
+            // 3. Verileri doldur ve kategoriyi kaydet
+            CreateCategory("xUnit Final Kategori");
         }
 
         // --- Helper Methods ---
@@ -49,26 +49,29 @@ namespace SeleniumSystemTests.Tests
                 }
                 catch (WebDriverTimeoutException)
                 {
-                    throw new Exception($"فشل الدخول! الرابط: {_fixture.Driver.Url}");
+                    throw new Exception($"Giriş başarısız! Link: {_fixture.Driver.Url}");
                 }
             }
         }
 
         private void CreateCategory(string categoryName)
         {
-            // رفع الصورة
+            // Resim yükleme
             string imagePath = CreateDummyImage();
             var fileInput = _wait.Until(ExpectedConditions.ElementExists(By.Id("file-input1")));
             fileInput.SendKeys(imagePath);
 
-            // الاسم
+            // İsim
             _fixture.Driver.FindElement(By.CssSelector(".ad-input")).SendKeys(categoryName);
 
-            // الحفظ
+            // Kaydet
             var saveBtn = _fixture.Driver.FindElement(By.CssSelector(".btn-kategori-ekle"));
             ClickWithJs(saveBtn);
 
-            // التحقق من النجاح
+            // Sayfanın yüklenmesini bekle
+            _wait.Until(ExpectedConditions.UrlContains("KategoriEkle"));
+
+            // Başarı mesajını kontrol et
             VerifySuccessMessage();
         }
 
@@ -90,36 +93,37 @@ namespace SeleniumSystemTests.Tests
         {
             try
             {
+                // SweetAlert'in görünmesini bekle (daha uzun süre)
                 var swalTitle = _wait.Until(ExpectedConditions.ElementIsVisible(By.Id("swal2-title")));
                 Assert.Equal("Başarılı!", swalTitle.Text);
 
-                // إغلاق التنبيه لضمان نظافة التيست
+                // Test temizliği için uyarıyı kapat
                 var confirmBtn = _fixture.Driver.FindElement(By.CssSelector(".swal2-confirm"));
                 if (confirmBtn.Displayed) ClickWithJs(confirmBtn);
             }
             catch (WebDriverTimeoutException)
             {
-                Assert.True(false, $"لم تظهر رسالة النجاح. الرابط: {_fixture.Driver.Url}");
+                Assert.True(false, $"Başarı mesajı görünmedi. Link: {_fixture.Driver.Url}");
             }
         }
         [Fact]
         public void Security_StudentCannotAccessAdminPage()
         {
-            // 1. تسجيل الدخول كـ "طالب" (وليس أدمن)
-            // استخدم رقم طالب موجود عندك بالداتا بيز
+            // 1. "Öğrenci" olarak giriş yap (admin değil)
+            // Veritabanında mevcut bir öğrenci numarası kullan
             _loginPage.Login("2212721320", "Alkasem.00");
 
-            // 2. محاولة الدخول "خلسة" إلى صفحة إضافة التصنيف (رابط الأدمن)
+            // 2. "Gizlice" kategori ekleme sayfasına (admin linki) girmeyi dene
             string adminUrl = $"{WebDriverFixture.BaseUrl}/Adminler/Admin/KategoriEkle";
             _fixture.Driver.Navigate().GoToUrl(adminUrl);
 
-            // 3. التحقق (Security Check)
-            // النظام لازم يمنعه، يعني الرابط الحالي *يجب ألا يكون* رابط الأدمن
-            // غالباً رح يرجعه لصفحة Login أو AccessDenied
+            // 3. Kontrol (Güvenlik Kontrolü)
+            // Sistem onu engellemeli, yani mevcut link *admin linki olmamalı*
+            // Genellikle Login veya AccessDenied sayfasına yönlendirir
 
             string currentUrl = _fixture.Driver.Url;
 
-            // الشرط: الرابط الحالي لا يساوي رابط الأدمن الذي حاولنا دخوله
+            // Koşul: Mevcut link, girmeye çalıştığımız admin linki ile eşit olmamalı
             Assert.NotEqual(adminUrl, currentUrl);
         }
     }

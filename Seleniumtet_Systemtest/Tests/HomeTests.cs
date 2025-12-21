@@ -43,7 +43,7 @@ namespace SeleniumSystemTests.Tests
             bool isLogoDisplayed = _fixture.Driver.FindElement(By.CssSelector(".navbar-brand img")).Displayed;
 
             // Assert
-            // الترجمة هنا فقط (رسالة الخطأ)
+            // Sadece hata mesajı için çeviri
             Assert.True(isLogoDisplayed, "Ana sayfada logo görüntülenmiyor! (Logo is not visible)");
         }
 
@@ -65,7 +65,7 @@ namespace SeleniumSystemTests.Tests
             long loadTime = stopwatch.ElapsedMilliseconds;
 
             // Assert
-            // الترجمة هنا لرسالة الخطأ فقط
+            // Sadece hata mesajı için çeviri
             Assert.True(loadTime < 2000, $"Sayfa çok yavaş! Yüklenme süresi: {loadTime}ms. Beklenen: < 2000ms");
         }
     }

@@ -8,15 +8,15 @@ namespace KutuphaneProject.IntegrationTests.TestUtilities
     {
         public static KutuphaneDbContext CreateContext()
         {
-            // استخدم In-Memory Database تماماً
+            // Tamamen In-Memory Database kullan
             var options = new DbContextOptionsBuilder<KutuphaneDbContext>()
                 .UseInMemoryDatabase(databaseName: "KutuphaneTestDB_" + Guid.NewGuid().ToString())
                 .Options;
 
             var context = new KutuphaneDbContext(options);
 
-            // لا تستخدم EnsureDeleted/EnsureCreated مع In-Memory
-            // فقط أضف البيانات
+            // In-Memory ile EnsureDeleted/EnsureCreated kullanma
+            // Sadece verileri ekle
             SeedTestData(context);
 
             return context;
@@ -24,22 +24,22 @@ namespace KutuphaneProject.IntegrationTests.TestUtilities
 
         public static void SeedTestData(KutuphaneDbContext context)
         {
-            // 1. أولاً: تنظيف أي بيانات موجودة
+            // 1. Önce: Mevcut verileri temizle
             context.Kitaplar.RemoveRange(context.Kitaplar);
             context.Kategoriler.RemoveRange(context.Kategoriler);
             context.Ogrenciler.RemoveRange(context.Ogrenciler);
             context.SaveChanges();
 
-            // 2. إنشاء صورة افتراضية بسيطة
+            // 2. Basit varsayılan resim oluştur
             byte[] CreateDefaultImage()
             {
-                // صورة PNG صغيرة جداً (1x1 pixel)
+                // Çok küçük PNG resim (1x1 pixel)
                 return Convert.FromBase64String("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==");
             }
 
             var defaultImage = CreateDefaultImage();
 
-            // 3. إضافة الفئات أولاً (لأن الكتب تحتاجها)
+            // 3. Önce kategorileri ekle (çünkü kitaplar bunlara ihtiyaç duyar)
             var kategori1 = new Kategori
             {
                 Id = 1,
@@ -56,16 +56,16 @@ namespace KutuphaneProject.IntegrationTests.TestUtilities
 
             context.Kategoriler.Add(kategori1);
             context.Kategoriler.Add(kategori2);
-            context.SaveChanges(); // حفظ الفئات أولاً
+            context.SaveChanges(); // Önce kategorileri kaydet
 
-            // 4. إضافة الكتب
+            // 4. Kitapları ekle
             var kitaplar = new List<Kitap>
             {
                 new Kitap
                 {
                     Id = 1,
                     Ad = "Suc ve Ceza",
-                    KategoriId = 1, // مرتبط بـ kategori1
+                    KategoriId = 1, // kategori1 ile ilişkili
                     Aciklama = "Test açıklama 1",
                     Image = defaultImage,
                     EklemeTarihi = DateTime.Now.AddDays(-10)
@@ -83,7 +83,7 @@ namespace KutuphaneProject.IntegrationTests.TestUtilities
                 {
                     Id = 3,
                     Ad = "Dune",
-                    KategoriId = 2, // مرتبط بـ kategori2
+                    KategoriId = 2, // kategori2 ile ilişkili
                     Aciklama = "Test açıklama 3",
                     Image = defaultImage,
                     EklemeTarihi = DateTime.Now
@@ -92,7 +92,7 @@ namespace KutuphaneProject.IntegrationTests.TestUtilities
 
             context.Kitaplar.AddRange(kitaplar);
 
-            // 5. إضافة الطلاب (لا يوجد حقول مطلوبة)
+            // 5. Öğrencileri ekle (zorunlu alan yok)
             var ogrenciler = new List<Ogrenci>
             {
                 new Ogrenci
@@ -113,7 +113,7 @@ namespace KutuphaneProject.IntegrationTests.TestUtilities
 
             context.Ogrenciler.AddRange(ogrenciler);
 
-            // 6. حفظ كل شيء
+            // 6. Her şeyi kaydet
             context.SaveChanges();
         }
     }

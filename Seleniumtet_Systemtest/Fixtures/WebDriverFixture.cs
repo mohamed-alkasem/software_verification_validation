@@ -7,13 +7,13 @@ namespace SeleniumSystemTests.Fixtures
     public class WebDriverFixture : IDisposable
     {
         public IWebDriver Driver { get; private set; }
-        // تأكد أن هذا الرابط هو نفس الرابط اللي بيشتغل عليه مشروعك
+        // Bu linkin projenizin çalıştığı linkle aynı olduğundan emin olun
         public const string BaseUrl = "https://localhost:7123";
 
         public WebDriverFixture()
         {
             var options = new ChromeOptions();
-            // options.AddArgument("--headless"); // لو بدك يشتغل بالخلفية
+            // options.AddArgument("--headless"); // Arka planda çalıştırmak isterseniz
 
             Driver = new ChromeDriver(options);
             Driver.Manage().Window.Maximize();
@@ -22,7 +22,7 @@ namespace SeleniumSystemTests.Fixtures
 
         public void Dispose()
         {
-            // ضروري جداً تشيل الكومنت عن هدول السطرين
+            // Bu iki satırın yorumunu kaldırmak çok önemlidir
             Driver.Quit();
             Driver.Dispose();
         }
