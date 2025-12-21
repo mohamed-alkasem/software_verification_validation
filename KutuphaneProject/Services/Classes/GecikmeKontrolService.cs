@@ -1,13 +1,18 @@
 ﻿using KutuphaneProject.Services.Interfaces;
+using KutuphaneProject.Models;
+using Microsoft.Extensions.Logging;
 
 namespace KutuphaneProject.Services.Classes
 {
     public class GecikmeKontrolService
     {
         private readonly IServiceProvider _serviceProvider;
-        public GecikmeKontrolService(IServiceProvider serviceProvider)
+        private readonly ILogger<GecikmeKontrolService> _logger;
+
+        public GecikmeKontrolService(IServiceProvider serviceProvider, ILogger<GecikmeKontrolService> logger)
         {
             _serviceProvider = serviceProvider;
+            _logger = logger;
         }
 
         public async Task Kontrol()
@@ -29,29 +34,35 @@ namespace KutuphaneProject.Services.Classes
                                 var gecikmeGunleri = (DateTime.Now - odunc.GeriDonusTarihi).Days;
                                 if (gecikmeGunleri > 0)
                                 {
-                                    //BorcMiktari ödunçte güncel
-                                    odunc.BorcMiktari += gecikmeGunleri; // Her gün 1 TL
-                                    if (odunc.KalanSure > 0)
+                                    // Sadece henüz işlenmemiş gecikme günlerini hesapla
+                                    var sonKontrolTarihi = odunc.KontrolTarihi;
+                                    var yeniGecikmeGunleri = (DateTime.Now - sonKontrolTarihi).Days;
+                                    
+                                    if (yeniGecikmeGunleri > 0)
                                     {
-                                        odunc.KalanSure -= 1;
+                                        // Günlük 1 TL gecikme ücreti ekle
+                                        odunc.BorcMiktari += yeniGecikmeGunleri;
+                                        odunc.KontrolTarihi = DateTime.Now;
+                                        
+                                        // Öğrencinin toplam borcunu güncelle
+                                        var ogrenci = await ogrenciService.GetOgrenciById(odunc.OgrenciId);
+                                        if (ogrenci != null)
+                                        {
+                                            ogrenci.BorcMiktari += yeniGecikmeGunleri;
+                                            await ogrenciService.OgrenciyiGuncelle(ogrenci);
+                                            _logger.LogInformation($"{ogrenci.AdSoyad} için {yeniGecikmeGunleri} günlük gecikme ücreti eklendi. Toplam borç: {ogrenci.BorcMiktari} TL");
+                                        }
+                                        
+                                        await oduncService.OduncuyuGuncelle(odunc);
                                     }
-                                    await oduncService.OduncuyuGuncelle(odunc);
-
-                                    //BorcMiktari öğrencide güncel
-                                    var ogrenci = await ogrenciService.GetOgrenciById(odunc.OgrenciId);
-                                    ogrenci.BorcMiktari += gecikmeGunleri; // Her gün 1 TL
-                                    await ogrenciService.OgrenciyiGuncelle(ogrenci);
                                 }
                             }
-                            else if (odunc.KontrolTarihi.AddHours(24) == DateTime.Now)
+                            
+                            // Kalan süreyi güncelle
+                            if (odunc.KalanSure > 0 && odunc.KontrolTarihi.Date < DateTime.Today)
                             {
-                                odunc.KontrolTarihi = DateTime.Now;
+                                odunc.KalanSure = Math.Max(0, odunc.KalanSure - 1);
                                 await oduncService.OduncuyuGuncelle(odunc);
-                                if (odunc.KalanSure > 0)
-                                {
-                                    odunc.KalanSure -= 1;
-                                    await oduncService.OduncuyuGuncelle(odunc);
-                                }
                             }
                         }
                     }
@@ -59,7 +70,7 @@ namespace KutuphaneProject.Services.Classes
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Hata: {ex.Message}");
+                _logger.LogError(ex, "Gecikme kontrolü sırasında bir hata oluştu");
             }
         }
     }

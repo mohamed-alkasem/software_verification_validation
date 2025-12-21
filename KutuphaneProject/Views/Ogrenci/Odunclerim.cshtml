@@ -8,46 +8,65 @@
             <div class="col-12 col-lg-8 col-xl-7">
                 <h2 class="text-center mb-2">Ödünçlerim</h2>
                 <div class="hr mb-5"></div>
-                @foreach (var odunc in Model)
+                @if (Model == null || Model.Count == 0)
                 {
-                    <div class="sonuclar mb-4">
-                        <div class="content bg-light d-flex justify-contnet-between gap-4 p-2 h-100 mb-4">
-                            <div class="kitap-img">
-                                <img class="img-fluid" src="@odunc.ImageSrc" alt="">
-                            </div>
-                            <div class="flex-grow-1 d-flex flex-column justify-content-between">
-                                <div class="d-flex justify-content-between">
-                                    <h4>@odunc.OduncAdi</h4>
-                                    @if (odunc.KalanSure == 0)
-                                    {
-                                        <p class="text-danger" style="font-size: 12px">Teslim Süresi Geçti! Lütfen Kitabı Hemen Teslim Edin.</p>
-                                    }
-                                    else if (odunc.KalanSure == 1)
-                                    {
-                                        <p>Kalan Süre: <span class="text-danger" style="font-size: 16px">Son Gün!</span></p>
-                                    }
-                                    else
-                                    {
-                                        <p>Kalan Süre: <span>@odunc.KalanSure</span></p>
-                                    }
+                    <p class="text-center">Şu an ödünç aldığınız kitap bulunmamaktadır.</p>
+                }
+                else
+                {
+                    @foreach (var odunc in Model)
+                    {
+                        <div class="sonuclar mb-4">
+                            <div class="content bg-light d-flex justify-contnet-between gap-4 p-2 h-100 mb-4">
+                                <div class="kitap-img">
+                                    <img class="img-fluid" src="@odunc.ImageSrc" alt="">
                                 </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    @if (odunc.BorcMiktari > 0)
-                                    {
-                                        <p class="text-danger my-auto">
-                                            Borcunuz: <span class="borc">@odunc.BorcMiktari TL</span>
-                                        </p>
-                                        <a href="/Ogrenci/OdemeYap?oduncId=@odunc.OduncId" class="btn-iade text-decoration-none border-0 py-1 px-2 text-white">İade Et</a>
-                                    }
-                                    else
-                                    {
-                                        <p></p>
-                                        <a href="/Ogrenci/OduncIade?oduncId=@odunc.OduncId" class="btn-iade text-decoration-none border-0 py-1 px-2 text-white">İade Et</a>
-                                    }
+                                <div class="flex-grow-1 d-flex flex-column justify-content-between">
+                                    <div class="d-flex justify-content-between">
+                                        <h4>@odunc.OduncAdi</h4>
+                                        @if (odunc.KalanSure == 0)
+                                        {
+                                            <p class="text-danger" style="font-size: 12px">Teslim Süresi Geçti! Lütfen Kitabı Hemen Teslim Edin.</p>
+                                        }
+                                        else if (odunc.KalanSure == 1)
+                                        {
+                                            <p>Kalan Süre: <span class="text-danger" style="font-size: 16px">Son Gün!</span></p>
+                                        }
+                                        else
+                                        {
+                                            <p>Kalan Süre: <span>@odunc.KalanSure</span></p>
+                                        }
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        @if (odunc.KalanSure > 0)
+                                        {
+                                            <p class="my-auto" style="font-size: 12px">@odunc.KalanSure gün kalmış sizden para kesilmek için</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="my-auto" style="font-size: 12px"></p>
+                                        }
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        @if (odunc.BorcMiktari > 0)
+                                        {
+                                            <p class="text-danger my-auto">
+                                                Borcunuz: <span class="borc">@odunc.BorcMiktari TL</span>
+                                            </p>
+                                            <a href="/Ogrenci/OdemeYap?oduncId=@odunc.OduncId" class="btn-iade text-decoration-none border-0 py-1 px-2 text-white">İade Et</a>
+                                        }
+                                        else
+                                        {
+                                            <p class="my-auto">
+                                                Borcunuz: <span class="borc">0 TL</span>
+                                            </p>
+                                            <a href="/Ogrenci/OduncIade?oduncId=@odunc.OduncId" class="btn-iade text-decoration-none border-0 py-1 px-2 text-white">İade Et</a>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 }
                 @if (ViewBag.ogrenciBorcu != 0)
                 {

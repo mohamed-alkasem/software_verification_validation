@@ -227,10 +227,24 @@ namespace KutuphaneProject.Controllers
         //----------------------------------------------------
 
         //OduncAl---------------------------------------------
+        [HttpGet]
         public async Task<IActionResult> OduncAl(int kitapId)
+        {
+            TempData["ErrorMessage"] = "Lütfen kitabı ödünç almadan önce iade tarihini seçiniz.";
+            return RedirectToAction("KitapOgrenci", new { kitapId });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> OduncAl(int kitapId, DateTime geriDonusTarihi)
         {
             var kitap = await _kitapService.GetKitapById(kitapId);
             if (kitap == null) return NotFound();
+
+            if (geriDonusTarihi.Date <= DateTime.Today)
+            {
+                TempData["ErrorMessage"] = "İade tarihi bugünden ileri bir tarih olmalıdır.";
+                return RedirectToAction("KitapOgrenci", new { kitapId = kitap.Id });
+            }
 
             var ogrenciNo = User.Identity!.Name;  //giriş yapan kişinin öğrenci numarasını sakla
             if (ogrenciNo is not null)
@@ -238,26 +252,27 @@ namespace KutuphaneProject.Controllers
                 var ogrenci = await _ogrenciService.GetOgrenciByOgrenciNo(ogrenciNo);
                 if (ogrenci is not null)
                 {
+                    var kalanSure = (geriDonusTarihi.Date - DateTime.Today).Days;
                     var odunc = new Odunc()
                     {
                         OgrenciId = ogrenci.Id,
                         Name = kitap.Ad,
                         KitapId = kitap.Id,
                         KartNo = "",
-                        KalanSure = 10,
+                        KalanSure = kalanSure,
                         BorcMiktari = 0,
                         AlinmaTarihi = DateTime.Now,
-                        KontrolTarihi = DateTime.Now,                        
-                        GeriDonusTarihi = DateTime.Now.AddDays(10), // 10 gün sonrası
+                        KontrolTarihi = DateTime.Now,
+                        GeriDonusTarihi = geriDonusTarihi.Date,
                     };
-                    if (odunc is not null)
-                    {
-                        await _oduncService.OduncEkle(odunc);
-                        TempData["SuccessMessage"] = "Ödünç başarıyla alındı!";
-                        return RedirectToAction("KitapOgrenci", new { kitapId = kitap.Id });
-                    }
+
+                    await _oduncService.OduncEkle(odunc);
+                    TempData["SuccessMessage"] = $"Ödünç başarıyla alındı! Son teslim tarihi: {geriDonusTarihi:dd.MM.yyyy}";
+                    return RedirectToAction("KitapOgrenci", new { kitapId = kitap.Id });
                 }
             }
+
+            TempData["ErrorMessage"] = "Ödünç alma sırasında bir hata oluştu.";
             return RedirectToAction("KitapOgrenci", new { kitapId = kitap.Id });
         }
         //----------------------------------------------------
@@ -266,6 +281,7 @@ namespace KutuphaneProject.Controllers
         public async Task<IActionResult> Odunclerim()
         {
             var ogrenciNo = User.Identity!.Name;
+
             if (ogrenciNo is not null)
             {
                 var ogrenci = await _ogrenciService.GetOgrenciByOgrenciNo(ogrenciNo);
@@ -282,15 +298,16 @@ namespace KutuphaneProject.Controllers
                             var odunc = new OduncDto()
                             {
                                 OduncId = item.Id,
-                                OduncAdi = kitap.Ad,
+                                OduncAdi = kitap?.Ad ?? item.Name,
                                 BorcMiktari = item.BorcMiktari,
-                                Image = kitap.Image,
+                                Image = kitap?.Image,
                                 KalanSure = item.KalanSure
                             };
                             odunclerDto.Add(odunc);
                         }
                         return View(odunclerDto);
                     }
+
                 }
             }
             return RedirectToAction("Index");

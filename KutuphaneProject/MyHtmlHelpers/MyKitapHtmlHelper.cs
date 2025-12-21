@@ -1,4 +1,5 @@
-﻿using KutuphaneProject.Models;
+﻿using System;
+using KutuphaneProject.Models;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -52,11 +53,48 @@ namespace KutuphaneProject.MyHtmlHelpers
             div5.InnerHtml.AppendHtml(span);
             div3.InnerHtml.AppendHtml(div5);
 
-            TagBuilder a = new TagBuilder("a");
-            a.AddCssClass("btn-al text-decoration-none text-white p-1 px-2 border-0 d-block mx-auto");
-            a.Attributes.Add("href", $"/Ogrenci/OduncAl?kitapId={kitap.Id}");
-            a.InnerHtml.Append("Ödünç Al");
-            div3.InnerHtml.AppendHtml(a);
+            var minDate = DateTime.Today.AddDays(1).ToString("yyyy-MM-dd");
+            var defaultDate = DateTime.Today.AddDays(10).ToString("yyyy-MM-dd");
+
+            TagBuilder form = new TagBuilder("form");
+            form.Attributes.Add("method", "post");
+            form.Attributes.Add("action", "/Ogrenci/OduncAl");
+            form.AddCssClass("d-flex flex-column gap-2");
+
+            TagBuilder hiddenKitapId = new TagBuilder("input");
+            hiddenKitapId.Attributes.Add("type", "hidden");
+            hiddenKitapId.Attributes.Add("name", "kitapId");
+            hiddenKitapId.Attributes.Add("value", kitap.Id.ToString());
+            form.InnerHtml.AppendHtml(hiddenKitapId);
+
+            TagBuilder label = new TagBuilder("label");
+            label.AddCssClass("form-label");
+            label.Attributes.Add("for", "geriDonusTarihi");
+            label.InnerHtml.Append("İade Tarihi Seçiniz:");
+            form.InnerHtml.AppendHtml(label);
+
+            TagBuilder dateInput = new TagBuilder("input");
+            dateInput.AddCssClass("form-control");
+            dateInput.Attributes.Add("type", "date");
+            dateInput.Attributes.Add("id", "geriDonusTarihi");
+            dateInput.Attributes.Add("name", "geriDonusTarihi");
+            dateInput.Attributes.Add("min", minDate);
+            dateInput.Attributes.Add("value", defaultDate);
+            dateInput.Attributes.Add("required", "required");
+            form.InnerHtml.AppendHtml(dateInput);
+
+            TagBuilder p2 = new TagBuilder("p");
+            p2.AddCssClass("mb-2");
+            p2.InnerHtml.Append("Gecikme durumunda her gün için 1 TL ceza uygulanacaktır.");
+            form.InnerHtml.AppendHtml(p2);
+
+            TagBuilder button = new TagBuilder("button");
+            button.AddCssClass("btn-al text-decoration-none text-white p-1 px-2 border-0 d-block mx-auto");
+            button.Attributes.Add("type", "submit");
+            button.InnerHtml.Append("Ödünç Al");
+            form.InnerHtml.AppendHtml(button);
+
+            div3.InnerHtml.AppendHtml(form);
 
             tagBuilder.InnerHtml.AppendHtml(div3);
             //-------------------------------
